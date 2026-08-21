@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מעבדת הסוויטש והוילאנים של סהר ותלמידי תקשוב</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+:root{
+  --bg:#FAF7F2;
+  --panel:#FFFFFF;
+  --panel2:#F3EFEA;
+  --panel3:#EBE5DD;
+  --border:#E2D9CE;
+  --border2:#CBD5E1;
+  --text:#292524;
+  --muted:#57534E;
+  --muted2:#78716C;
+
+  --vlan10:#3B82F6; /* SALE - Blue */
+  --vlan20:#F97316; /* MNG - Orange */
+  --vlan30:#EAB308; /* MON - Yellow */
+  --trunk:#F59E0B;  /* TRUNK - Amber */
+
+  --stick:#7C3AED;
+  --ok:#059669;
+  --bad:#DC2626;
+  --info:#2563EB;
+
+  --radius:14px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Rubik',sans-serif;
+  line-height:1.6;
+  padding-bottom:120px;
+}
+
+.mono{ font-family:'Fira Code',monospace; }
+
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* HERO HEADER */
+header.hero{
+  padding:30px 0 15px;
+  border-bottom:1px solid var(--border);
+}
+
+.hero-flex{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  direction:rtl;
+}
+
+.hero-text{ flex:1; }
+
+.eyebrow{
+  display:inline-block;
+  font-family:'Fira Code',monospace;
+  font-size:12px;
+  letter-spacing:1px;
+  color:var(--stick);
+  background:rgba(124,58,237,0.1);
+  border:1px solid rgba(124,58,237,0.3);
+  padding:4px 12px;
+  border-radius:20px;
+  margin-bottom:10px;
+}
+
+h1.title{
+  font-size:28px;
+  margin-bottom:6px;
+  color:#1C1917;
+  font-weight:800;
+}
+
+.avatar-wild-wrapper{
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  flex-shrink:0;
+}
+
+/* CLEAN AVATAR WITHOUT PURPLE BORDER */
+.avatar-wild{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  border:none;
+  box-shadow:none;
+  animation:crazySpin 12s linear infinite;
+}
+
+@keyframes crazySpin{
+  0%{ transform:rotate(0deg) scale(1); }
+  50%{ transform:rotate(180deg) scale(1.05); }
+  100%{ transform:rotate(360deg) scale(1); }
+}
+
+/* NAVIGATION TABS */
+.tab-nav{
+  display:flex;
+  gap:8px;
+  border-bottom:2px solid var(--border);
+  margin-top:20px;
+  overflow-x:auto;
+}
+
+.tab-btn{
+  padding:12px 18px;
+  font-weight:600;
+  font-size:14px;
+  border:none;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  border-bottom:3px solid transparent;
+  transition:all 0.2s ease;
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.tab-btn:hover{
+  color:var(--stick);
+  background:rgba(124,58,237,0.05);
+  border-radius:8px 8px 0 0;
+}
+
+.tab-btn.active{
+  color:var(--stick);
+  border-bottom-color:var(--stick);
+  background:var(--panel);
+  border-radius:8px 8px 0 0;
+}
+
+.tab-content{ display:none; padding:24px 0; }
+.tab-content.active{ display:block; }
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);
+  margin-bottom:20px;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+@media(max-width:850px){
+  .grid2{ grid-template-columns:1fr; }
+  .hero-flex{ flex-direction:column; text-align:center; }
+}
+
+/* INTERACTIVE SWITCH BOARD */
+.switch-board{
+  background:#1E293B;
+  border:3px solid #334155;
+  border-radius:12px;
+  padding:16px;
+  color:#FFFFFF;
+}
+
+.ports-grid{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:6px;
+  margin-top:12px;
+  direction:ltr;
+}
+
+.port-box{
+  background:#334155;
+  border:2px solid #475569;
+  border-radius:6px;
+  padding:6px 2px;
+  text-align:center;
+  font-family:'Fira Code',monospace;
+  font-size:11px;
+  transition:all 0.3s ease;
+}
+
+.port-box.vlan-10{ background:rgba(59,130,246,0.3); border-color:#3B82F6; color:#93C5FD; }
+.port-box.vlan-20{ background:rgba(249,115,22,0.3); border-color:#F97316; color:#FDBA74; }
+.port-box.vlan-30{ background:rgba(234,179,8,0.3); border-color:#EAB308; color:#FDE047; }
+.port-box.vlan-trunk{ background:rgba(245,158,11,0.3); border-color:#F59E0B; color:#FCD34D; }
+
+.terminal-box{
+  background:#0F172A;
+  border:1px solid #334155;
+  border-radius:10px;
+  padding:16px;
+  font-family:'Fira Code',monospace;
+  font-size:13px;
+  color:#38BDF8;
+  direction:ltr;
+  text-align:left;
+  white-space:pre-wrap;
+  min-height:160px;
+  box-shadow:inset 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.infographic-img{
+  width:100%;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#FFFFFF;
+}
+
+.diagram-wrap{
+  background:#F5F0E8;
+  border:2px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+  overflow-x:auto;
+}
+
+button.btn{
+  background:var(--stick);
+  color:#FFFFFF;
+  border:none;
+  border-radius:8px;
+  padding:10px 18px;
+  font-family:'Rubik';
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+  transition:transform .1s, opacity .15s;
+}
+
+button.btn:hover{ opacity:0.9; }
+button.btn:active{ transform:scale(0.97); }
+button.btn.secondary{ background:var(--panel3); color:var(--text); border:1px solid var(--border2); }
+button.btn.pause-btn{ background:#D97706; }
+
+/* SIMULATOR PDU */
+.pdu-envelope{ pointer-events:none; overflow:visible; }
+.pdu-text{
+  font-family:'Fira Code',monospace;
+  direction:ltr;
+  unicode-bidi:plaintext;
+  text-anchor:middle;
+  dominant-baseline:middle;
+}
+
+#movingPacket text{
+  direction:ltr;
+  unicode-bidi:plaintext;
+  writing-mode:horizontal-tb;
+}
+
+#movingPacket .pdu-body{ filter:drop-shadow(0 5px 8px rgba(15,23,42,0.22)); }
+#movingPacket .pdu-content{ clip-path:url(#pduClip); }
+
+.log-panel{
+  background:#FAF7F2;
+  border:1px solid var(--border);
+  border-radius:10px;
+  margin-top:16px;
+  padding:14px;
+  font-family:'Fira Code',monospace;
+  font-size:13px;
+  max-height:220px;
+  overflow-y:auto;
+  color:#44403C;
+}
+
+.log-line{ margin-bottom:8px; animation:fadeIn .3s ease; }
+.log-line .lbl{ color:var(--stick); font-weight:bold; }
+
+/* QUIZ STYLES */
+.quiz-q{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:20px;
+  margin-bottom:16px;
+}
+
+.quiz-opt{
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:12px;
+  cursor:pointer;
+  margin-top:8px;
+  font-size:14px;
+  transition:border-color 0.15s;
+}
+
+.quiz-opt:hover{ border-color:var(--muted); }
+.quiz-opt.correct{ background:rgba(5,150,105,0.15); border-color:var(--ok); color:var(--ok); font-weight:600; }
+.quiz-opt.wrong{ background:rgba(220,38,38,0.15); border-color:var(--bad); color:var(--bad); }
+.quiz-opt.disabled{ pointer-events:none; }
+
+.quiz-explain{
+  margin-top:10px;
+  padding:10px 12px;
+  background:var(--panel2);
+  border-radius:8px;
+  font-size:13px;
+  display:none;
+}
+.quiz-explain.show{ display:block; }
+
+.score-card{
+  background:var(--panel);
+  border:2px solid var(--stick);
+  border-radius:var(--radius);
+  padding:24px;
+  text-align:center;
+  margin-top:20px;
+  display:none;
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(3px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <!-- HERO HEADER WITH WILD AVATAR -->
+  <header class="hero">
+    <div class="hero-flex">
+      <div class="hero-text">
+        <div class="eyebrow">Cisco Catalyst 2960 · Layer 2 Switching · 802.1Q</div>
+        <h1 class="title">מעבדת הסוויטש והוילאנים של סהר ותלמידי תקשוב</h1>
+        <p class="text-stone-600 text-sm">חוקרים, מבינים ומגדירים מתגי רשת בצורה אינטראקטיבית.</p>
+      </div>
+
+      <div class="avatar-wild-wrapper">
+        <img src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w500" alt="אוואטר" class="avatar-wild">
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('tab1')">
+      <i data-lucide="sliders" class="w-4 h-4"></i> 1. הגדרת מתג ופורטים
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab2')">
+      <i data-lucide="image" class="w-4 h-4"></i> 2. ניתוח אינפוגרפיקות
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab3')">
+      <i data-lucide="activity" class="w-4 h-4"></i> 3. סימולטור תעבורה
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab4')">
+      <i data-lucide="terminal" class="w-4 h-4"></i> 4. מעבדת CLI
+    </button>
+    <button class="tab-btn" onclick="switchTab('tab5')">
+      <i data-lucide="check-circle" class="w-4 h-4"></i> 5. מבדק מסכם
+    </button>
+  </nav>
+
+  <!-- TAB 1: INTERACTIVE SWITCH CONFIGURATOR -->
+  <div id="tab1" class="tab-content active">
+    <div class="card">
+      <h2 class="text-lg font-bold text-stone-800 mb-2 flex items-center gap-2">
+        <i data-lucide="cpu" class="text-purple-600 w-5 h-5"></i> מהו מתג (Switch) וכיצד מגדירים VLANs בפורטים?
+      </h2>
+      <p class="text-stone-600 text-sm mb-4 leading-relaxed">
+        <b>מתג (Switch)</b> מחבר מכשירים ברשת המקומית (LAN) בשכבה 2. כדי להבטיח אבטחה וחלוקה לתחומי שידור (Broadcast Domains), אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות (VLANs). תרגל למטה הגדרת פורטים למתג Cisco Catalyst 2960!
+      </p>
+
+      <!-- PHYSICAL SWITCH DISPLAY (FULL WIDTH & WHITE BACKGROUND) -->
+      <div class="switch-board mb-6">
+        <div class="flex justify-between items-center border-b border-slate-700 pb-2 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
+            <span class="font-bold text-sm font-mono text-slate-200">Cisco Catalyst 2960-S Series</span>
+          </div>
+          <span class="text-xs text-slate-400 font-mono">24x FastEthernet + 2x Gigabit Trunk</span>
+        </div>
+
+        <div class="bg-white rounded border border-slate-700 p-2 mb-4">
+          <img src="https://drive.google.com/thumbnail?id=1iap5LZJDOCWeqFs7v6eqY6l8vQUWWzxu&sz=w1000" alt="Cisco Catalyst 2960" class="w-full h-auto object-cover rounded">
+        </div>
+
+        <!-- PORTS LAYOUT INTERACTIVE (ODD TOP, EVEN BOTTOM) -->
+        <div class="text-xs text-slate-300 font-bold mb-1">מפת שיוך הפורטים במתג (Ports 1-24 - אי-זוגי למעלה / זוגי למטה):</div>
+        <div class="ports-grid" id="portsGrid">
+          <!-- Generated via JS -->
+        </div>
+      </div>
+
+      <!-- CONFIGURATION CONTROLS -->
+      <div class="bg-stone-50 border border-stone-200 p-4 rounded-xl mb-6">
+        <h3 class="font-bold text-stone-800 text-sm mb-3">🛠️ מחולל פקודות קונפיגורציה (VLAN Assignment):</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 text-sm">
+          <div>
+            <label class="block text-xs font-bold text-stone-600 mb-1">בחר VLAN / מחלקה:</label>
+            <select id="selVlan" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono">
+              <option value="10">VLAN 10 - SALE (מכירות)</option>
+              <option value="20">VLAN 20 - MNG (ניהול)</option>
+              <option value="30">VLAN 30 - MON (ניטור)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-stone-600 mb-1">מפורט (From Port):</label>
+            <select id="selStartPort" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono"></select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-stone-600 mb-1">עד פורט (To Port):</label>
+            <select id="selEndPort" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono"></select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-stone-600 mb-1">מצב פורט (Port Mode):</label>
+            <select id="selPortMode" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono">
+              <option value="access">Access (מכשיר קצה)</option>
+              <option value="trunk">Trunk (חיבור בין מתגים)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn w-full" onclick="generateConfig()">
+          ⚡ החל הגדרה וייצר פקודות CLI מתאימות
+        </button>
+      </div>
+
+      <!-- TERMINAL DISPLAY -->
+      <div>
+        <div class="flex justify-between items-center mb-1">
+          <span class="text-xs font-bold text-stone-700">💻 פקודות ה-Cisco IOS שנוצרו (בזמן אמת):</span>
+          <span class="text-xs text-purple-600 font-mono">Syntax: Cisco CLI</span>
+        </div>
+        <div class="terminal-box" id="cliTerminal">
+Switch# configure terminal
+Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדרה...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: INFOGRAPHICS ANALYSIS -->
+  <div id="tab2" class="tab-content">
+    <div class="card mb-6">
+      <h2 class="text-xl font-bold text-stone-800 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף (OSI Encapsulation)</h2>
+      <div class="grid2 items-start">
+        <img src="https://drive.google.com/thumbnail?id=1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3&sz=w1000" alt="אינפוגרפיקה 1" class="infographic-img">
+        <div class="space-y-3 text-sm text-stone-700">
+          <div class="bg-stone-50 p-3 rounded-lg border">
+            <b>💻 מחשב שולח (OS):</b> מבצע Encapsulation, מוסיף IP Packet Header.
+          </div>
+          <div class="bg-stone-50 p-3 rounded-lg border">
+            <b>🎴 כרטיס רשת (NIC):</b> עוטף ב-L2 Frame עם MAC מקור ויעד.
+          </div>
+          <div class="bg-blue-50 p-3 rounded-lg border">
+            <b>🔀 סוויטש (Switch - L2):</b> מעביר לפי MAC בלבד - אינו משנה את המעטפת!
+          </div>
+          <div class="bg-amber-50 p-3 rounded-lg border">
+            <b>🌐 ראוטר (Router - L3):</b> מקלף את ה-L2 Frame הישן בכניסה, ויוצר L2 Frame חדש ביציאה!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="text-xl font-bold text-stone-800 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת (NIC) בשכבות 1 ו-2</h2>
+      <div class="grid2 items-start">
+        <img src="https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w1000" alt="אינפוגרפיקה 2" class="infographic-img">
+        <div class="space-y-3 text-sm text-stone-700">
+          <div class="bg-stone-50 p-3 rounded-lg border">
+            <b>📤 צד שולח:</b> L2 מוסיף FCS לבדיקת תקינות, L1 ממיר לאותות פיזיים (נחושת/אור/אלחוט).
+          </div>
+          <div class="bg-stone-50 p-3 rounded-lg border">
+            <b>📥 צד מקבל:</b> בודק תאימות MAC ובדיקת FCS. אם ה-Frame פגום - נפלט מיד לזבל (Discard)!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: FULL SIMULATOR (4 PCS + DETAILED PDU) -->
+  <div id="tab3" class="tab-content">
+    <div class="card">
+      <h2 class="text-xl font-bold text-stone-800 mb-1">סימולטור VLANs, תיוג 802.1Q ומעקב חבילות (PDU)</h2>
+      <p class="text-stone-600 text-sm mb-4">
+        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת (PDU) ובתיוג ה-VLAN על גבי קו ה-Trunk!
+      </p>
+
+      <div class="diagram-wrap">
+        <svg id="netDiagram" viewBox="0 0 1100 520" style="width:100%; display:block;">
+          <defs>
+            <clipPath id="pduClip">
+              <rect x="-115" y="-17" width="230" height="58" rx="5"/>
+            </clipPath>
+          </defs>
+
+          <!-- Connection Lines -->
+          <line x1="180" y1="120" x2="350" y2="260" stroke="#3B82F6" stroke-width="3" />
+          <line x1="180" y1="400" x2="350" y2="260" stroke="#F97316" stroke-width="3" />
+
+          <line x1="350" y1="260" x2="750" y2="260" stroke="#2563EB" stroke-width="6" stroke-dasharray="8 4"/>
+          <text x="550" y="245" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="13" font-weight="700">Trunk Link (802.1Q Tagged)</text>
+
+          <line x1="750" y1="260" x2="920" y2="120" stroke="#3B82F6" stroke-width="3" />
+          <line x1="750" y1="260" x2="920" y2="400" stroke="#EAB308" stroke-width="3" />
+
+          <!-- SWITCH 1 -->
+          <g transform="translate(300, 220)">
+            <rect width="100" height="80" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
+            <text x="50" y="30" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_1</text>
+            <text x="50" y="50" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">MAC Table</text>
+            <text x="50" y="68" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="9">Gi0/1 Trunk</text>
+          </g>
+
+          <!-- SWITCH 2 -->
+          <g transform="translate(700, 220)">
+            <rect width="100" height="80" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
+            <text x="50" y="30" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_2</text>
+            <text x="50" y="50" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">MAC Table</text>
+            <text x="50" y="68" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="9">Gi0/1 Trunk</text>
+          </g>
+
+          <!-- PC A (VLAN 10) -->
+          <g transform="translate(80, 70)">
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_A (Sales)</text>
+            <text x="100" y="45" text-anchor="middle" fill="#3B82F6" font-family="Fira Code" font-size="11" font-weight="700">VLAN 10</text>
+            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.10.11</text>
+            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: AA:AA:AA:11</text>
+          </g>
+
+          <!-- PC B (VLAN 20) -->
+          <g transform="translate(80, 355)">
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_B (HR)</text>
+            <text x="100" y="45" text-anchor="middle" fill="#F97316" font-family="Fira Code" font-size="11" font-weight="700">VLAN 20</text>
+            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.20.22</text>
+            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: BB:BB:BB:22</text>
+          </g>
+
+          <!-- PC C (VLAN 10) -->
+          <g transform="translate(820, 70)">
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_C (Sales)</text>
+            <text x="100" y="45" text-anchor="middle" fill="#3B82F6" font-family="Fira Code" font-size="11" font-weight="700">VLAN 10</text>
+            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.10.33</text>
+            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: CC:CC:CC:33</text>
+          </g>
+
+          <!-- PC D (VLAN 30) -->
+          <g transform="translate(820, 355)">
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#EAB308" stroke-width="2"/>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_D (IT)</text>
+            <text x="100" y="45" text-anchor="middle" fill="#EAB308" font-family="Fira Code" font-size="11" font-weight="700">VLAN 30</text>
+            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.30.44</text>
+            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: DD:DD:DD:44</text>
+          </g>
+
+          <!-- MOVING PACKET PDU DETAILED -->
+          <g id="movingPacket" class="pdu-envelope" style="display:none;">
+            <rect class="pdu-body" x="-125" y="-48" width="250" height="96" rx="10" fill="#0F172A" stroke="#7C3AED" stroke-width="2.5"/>
+            <rect x="-125" y="-48" width="250" height="24" rx="10" fill="#7C3AED"/>
+            <rect x="-125" y="-36" width="250" height="12" fill="#7C3AED"/>
+            <text id="pktProto" class="pdu-text" x="0" y="-31" fill="#FFFFFF" font-size="10" font-weight="800">PDU</text>
+
+            <g class="pdu-content">
+              <rect x="-115" y="-17" width="230" height="16" rx="3" fill="#1E293B"/>
+              <text id="pktSrc" class="pdu-text" x="0" y="-5" fill="#38BDF8" font-size="8">SRC MAC: AA:AA:AA:11</text>
+
+              <rect x="-115" y="1" width="230" height="16" rx="3" fill="#1E293B"/>
+              <text id="pktDst" class="pdu-text" x="0" y="13" fill="#FB7185" font-size="8">DST MAC: CC:CC:CC:33</text>
+
+              <rect x="-115" y="21" width="230" height="20" rx="4" fill="#172033"/>
+              <text id="pktData" class="pdu-text" x="0" y="32" fill="#FACC15" font-size="7.5">Tag: Untagged Access</text>
+            </g>
+          </g>
+        </svg>
+
+        <div class="mt-3">
+          <span id="selInfo" style="color:var(--muted); font-size:14px; font-weight:500;">
+            בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית 802.1Q...
+          </span>
+        </div>
+
+        <div class="mt-3 flex flex-wrap gap-3">
+          <button class="btn" onclick="runSimulation('VLAN10_SAME')">
+            תקשורת בתוך אותו VLAN (PC_A ➔ PC_C) 🚀
+          </button>
+          <button class="btn" style="background:var(--vlan20);" onclick="runSimulation('CROSS_VLAN_FAIL')">
+            ניסיון גישה בין VLANs שונים (PC_A ➔ PC_B) 🛑
+          </button>
+          <button class="btn" style="background:#059669;" onclick="runSimulation('BROADCAST_VLAN')">
+            שידור Broadcast ב-VLAN 10 בלבד 📡
+          </button>
+          <button class="btn pause-btn" id="pauseBtn" onclick="togglePause()">
+            השהה ⏸️
+          </button>
+          <button class="btn secondary" onclick="resetSim()">
+            איפוס
+          </button>
+        </div>
+
+        <div class="log-panel" id="simLog">
+          <div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: INTERACTIVE CLI LAB -->
+  <div id="tab4" class="tab-content">
+    <div class="card">
+      <h2 class="text-xl font-bold text-stone-800 mb-2">מעבדת CLI - הגדרת VLAN ופורט Trunk במתג</h2>
+      <p class="text-stone-600 text-sm mb-4">
+        תרגל הגדרת מתג Cisco דרך שורת הפקודה (CLI). הבא את המתג למצב העבודה המבוקש.
+      </p>
+
+      <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-4 text-sm">
+        <div class="font-bold text-amber-900 mb-1" id="taskTitle">משימה: הגדרת VLAN 10 ופורט Trunk</div>
+        <div class="text-xs text-amber-700 font-mono mb-2" id="taskProgress">שלב 1 מתוך 4</div>
+        <div class="text-stone-700" id="taskInstruction">
+          <b>שלב 1:</b> יצור את VLAN 10 ע"י הקלדת הפקודה: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono">vlan 10</code>
+        </div>
+      </div>
+
+      <div class="terminal-box" dir="ltr" style="min-height:220px;">
+        <div id="termOutput" dir="ltr" class="whitespace-pre-wrap">Switch> enable
+Switch# configure terminal</div>
+        <div class="flex items-center gap-2 mt-3 border-t border-slate-700 pt-2" dir="ltr">
+          <span class="text-green-400 font-mono" id="termPrompt">Switch(config)#</span>
+          <input
+            type="text"
+            id="termInput"
+            class="bg-transparent text-white outline-none flex-1 font-mono text-sm"
+            placeholder="Type CLI command here..."
+            onkeydown="if(event.key==='Enter')submitCmd()"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: 10-QUESTION QUIZ WITH SCORE CARD -->
+  <div id="tab5" class="tab-content">
+    <div class="card">
+      <h2 class="text-xl font-bold text-stone-800 mb-1">מבדק מסכם: מתגים, VLANs ותהליכי תקשורת</h2>
+      <p class="text-stone-600 text-sm mb-4">ענה על 10 השאלות הבאות כדי לבחון את שליטתך בחומר הנלמד:</p>
+
+      <div id="quizContainer"></div>
+
+      <div id="quizScoreCard" class="score-card">
+        <h3 class="text-2xl font-bold text-stone-900 mb-1">תוצאת המבחן המסכם</h3>
+        <div id="scoreDisplay" class="font-mono text-4xl font-extrabold text-purple-700 my-3">0 / 100</div>
+        <p id="scoreFeedback" class="text-sm font-semibold text-stone-600 mb-0"></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- HELP BUTTON FLOATING -->
+<div style="position:fixed; bottom:24px; left:24px; z-index:9999;">
+  <button
+    id="openHelpModalBtn"
+    class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3 px-5 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white/50"
+  >
+    <div class="w-9 h-9 rounded-full border border-white/60 overflow-hidden bg-slate-900 flex-shrink-0 shadow-inner">
+      <img
+        src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w200"
+        alt="אווטר בוט עזרה"
+        class="w-full h-full object-cover"
+      >
+    </div>
+    <span class="text-base font-bold">בוט עזרה</span>
+  </button>
+</div>
+
+<!-- HELP MODAL -->
+<div
+  id="helpModal"
+  class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4 transition-all duration-300"
+>
+  <div
+    class="bg-white border border-stone-200 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl transform scale-95 transition-transform duration-300"
+    id="helpModalContent"
+  >
+    <button
+      id="closeHelpModalBtn"
+      class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition-colors p-1 rounded-lg hover:bg-stone-100"
+    >
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+
+    <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-purple-500/50 p-1 bg-stone-100 shadow-lg shadow-purple-500/10 overflow-hidden">
+      <img
+        src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w300"
+        alt="תמונת בוט עזרה"
+        class="w-full h-full object-cover rounded-full"
+      >
+    </div>
+
+    <h3 class="text-lg font-black text-stone-900 mb-2">צריך עזרה במשימה?</h3>
+    <p class="text-sm text-stone-600 mb-6 leading-relaxed">
+      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ב-VLANs וכוון אותך לפתרון המלא!
+    </p>
+
+    <a
+      href="https://gemini.google.com/gem/167016ac4a4b?usp=sharing"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black py-3 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/20"
+    >
+      <span>הפעל את בוט העזרה</span>
+      <i data-lucide="external-link" class="w-4 h-4"></i>
+    </a>
+  </div>
+</div>
+
+<script>
+// INITIAL DEFAULT PORTS DATA BASED ON SHEET
+let portsData = [
+  { p: 1, vlan: 10, name: "SALE" },
+  { p: 2, vlan: 20, name: "MNG" },
+  { p: 3, vlan: 20, name: "MNG" },
+  { p: 4, vlan: 30, name: "MON" },
+  { p: 5, vlan: 30, name: "MON" },
+  { p: 6, vlan: 30, name: "MON" },
+  { p: 7, vlan: 20, name: "MNG" },
+  { p: 8, vlan: 10, name: "SALE" },
+  { p: 9, vlan: "trunk", name: "TRUNK" },
+  { p: 10, vlan: 0, name: "FREE" },
+  { p: 11, vlan: 0, name: "FREE" },
+  { p: 12, vlan: 0, name: "FREE" },
+  { p: 13, vlan: 10, name: "SALE" },
+  { p: 14, vlan: 20, name: "MNG" },
+  { p: 15, vlan: 30, name: "MON" },
+  { p: 16, vlan: 30, name: "MON" },
+  { p: 17, vlan: 30, name: "MON" },
+  { p: 18, vlan: 20, name: "MNG" },
+  { p: 19, vlan: 20, name: "MNG" },
+  { p: 20, vlan: 10, name: "SALE" },
+  { p: 21, vlan: "trunk", name: "TRUNK" },
+  { p: 22, vlan: 0, name: "FREE" },
+  { p: 23, vlan: 0, name: "FREE" },
+  { p: 24, vlan: 0, name: "FREE" }
+];
+
+// INIT SWITCH BOARD WITH ODD (TOP) AND EVEN (BOTTOM) CISCO PORT ORDERING
+function initBoard(){
+  const grid = document.getElementById("portsGrid");
+  const selStart = document.getElementById("selStartPort");
+  const selEnd = document.getElementById("selEndPort");
+
+  if(!grid) return;
+  grid.innerHTML = "";
+  selStart.innerHTML = "";
+  selEnd.innerHTML = "";
+
+  // Populate Select Options sequentially 1..24
+  for(let i=1; i<=24; i++){
+    selStart.innerHTML += `<option value="${i}">Port Fa0/${i}</option>`;
+    selEnd.innerHTML += `<option value="${i}">Port Fa0/${i}</option>`;
+  }
+
+  // Create ordered array for Cisco Layout: Top row [1,3,5..23], Bottom row [2,4,6..24]
+  let displayOrder = [];
+  // Top row (Odds)
+  for(let i=1; i<=23; i+=2){ displayOrder.push(i); }
+  // Bottom row (Evens)
+  for(let i=2; i<=24; i+=2){ displayOrder.push(i); }
+
+  displayOrder.forEach(portNum => {
+    const item = portsData[portNum - 1];
+    const box = document.createElement("div");
+    let cls = "port-box";
+    if(item.vlan === 10) cls += " vlan-10";
+    else if(item.vlan === 20) cls += " vlan-20";
+    else if(item.vlan === 30) cls += " vlan-30";
+    else if(item.vlan === "trunk") cls += " vlan-trunk";
+
+    box.className = cls;
+    box.innerHTML = `<div>Fa0/${item.p}</div><div class="font-bold">${item.vlan ? (item.vlan==='trunk'?'TRK':'V'+item.vlan) : '---'}</div>`;
+    grid.appendChild(box);
+  });
+
+  document.getElementById("selEndPort").value = "6";
+}
+
+function generateConfig(){
+  const vlan = document.getElementById("selVlan").value;
+  const startP = parseInt(document.getElementById("selStartPort").value);
+  const endP = parseInt(document.getElementById("selEndPort").value);
+  const mode = document.getElementById("selPortMode").value;
+  const term = document.getElementById("cliTerminal");
+
+  if(startP > endP){
+    alert("פורט התחלה חייב להיות קטן או שווה לפורט סיום!");
+    return;
+  }
+
+  const vnames = { "10": "SALE", "20": "MNG", "30": "MON" };
+  const vname = vnames[vlan] || "VLAN_NET";
+
+  let rangeStr = (startP === endP) ? `FastEthernet 0/${startP}` : `range FastEthernet 0/${startP} - ${endP}`;
+
+  for(let i = startP; i <= endP; i++){
+    if(mode === "trunk"){
+      portsData[i-1].vlan = "trunk";
+      portsData[i-1].name = "TRUNK";
+    }else{
+      portsData[i-1].vlan = parseInt(vlan);
+      portsData[i-1].name = vname;
+    }
+  }
+  initBoard();
+
+  let output = `Switch# configure terminal\n`;
+  if(mode === "access"){
+    output += `Switch(config)# vlan ${vlan}\n`;
+    output += `Switch(config-vlan)# name ${vname}\n`;
+    output += `Switch(config-vlan)# exit\n`;
+    output += `Switch(config)# interface ${rangeStr}\n`;
+    output += `Switch(config-if-range)# switchport mode access\n`;
+    output += `Switch(config-if-range)# switchport access vlan ${vlan}\n`;
+    output += `Switch(config-if-range)# no shutdown\n`;
+    output += `Switch(config-if-range)# end\n`;
+    output += `Switch# show vlan brief`;
+  }else{
+    output += `Switch(config)# interface ${rangeStr}\n`;
+    output += `Switch(config-if-range)# switchport mode trunk\n`;
+    output += `Switch(config-if-range)# switchport trunk allowed vlan add ${vlan}\n`;
+    output += `Switch(config-if-range)# no shutdown\n`;
+    output += `Switch(config-if-range)# end\n`;
+    output += `Switch# show interfaces trunk`;
+  }
+
+  term.textContent = output;
+}
+
+function switchTab(tabId){
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  
+  event.currentTarget.classList.add('active');
+  document.getElementById(tabId).classList.add('active');
+}
+
+// MODAL LOGIC
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.lucide){ lucide.createIcons(); }
+
+  const modal = document.getElementById('helpModal');
+  const modalContent = document.getElementById('helpModalContent');
+  const openBtn = document.getElementById('openHelpModalBtn');
+  const closeBtn = document.getElementById('closeHelpModalBtn');
+
+  if(openBtn && modal && modalContent && closeBtn){
+    openBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+      setTimeout(() => { modalContent.classList.remove('scale-95'); },10);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modalContent.classList.add('scale-95');
+      setTimeout(() => { modal.classList.add('hidden'); },150);
+    });
+
+    modal.addEventListener('click',(e)=>{
+      if(e.target === modal){
+        modalContent.classList.add('scale-95');
+        setTimeout(() => { modal.classList.add('hidden'); },150);
+      }
+    });
+  }
+
+  initBoard();
+  renderQuiz();
+});
+
+// SIMULATOR COORDINATES & ENGINE
+const coords = {
+  PCA: { x: 180, y: 115 },
+  PCB: { x: 180, y: 400 },
+  PCC: { x: 920, y: 115 },
+  PCD: { x: 920, y: 400 },
+  SW1: { x: 350, y: 260 },
+  SW2: { x: 750, y: 260 }
+};
+
+let isSimulating = false;
+let isPaused = false;
+let pauseResolve = null;
+
+function togglePause(){
+  const btn = document.getElementById("pauseBtn");
+  if(!isPaused){
+    isPaused = true;
+    btn.textContent = "המשך ▶️";
+    btn.style.background = "#059669";
+  }else{
+    isPaused = false;
+    btn.textContent = "השהה ⏸️";
+    btn.style.background = "#D97706";
+    if(pauseResolve){
+      pauseResolve();
+      pauseResolve = null;
+    }
+  }
+}
+
+async function checkPause(){
+  if(isPaused){
+    await new Promise(resolve => { pauseResolve = resolve; });
+  }
+}
+
+function fitTextInEnvelope(el, text, maxW){
+  if(!el) return;
+  el.textContent = text || "";
+  el.setAttribute("direction", "ltr");
+  el.setAttribute("unicode-bidi", "plaintext");
+  el.setAttribute("writing-mode", "horizontal-tb");
+  el.setAttribute("text-anchor", "middle");
+  el.setAttribute("dominant-baseline", "middle");
+  el.removeAttribute("textLength");
+  el.removeAttribute("lengthAdjust");
+
+  try{
+    const currentW = el.getComputedTextLength();
+    if(currentW > maxW){
+      el.setAttribute("textLength", String(maxW));
+      el.setAttribute("lengthAdjust", "spacingAndGlyphs");
+    }
+  }catch(e){}
+}
+
+async function animatePacketPDU(x1, y1, x2, y2, config, duration = 3500){
+  const pkt = document.getElementById("movingPacket");
+  const protoTxt = document.getElementById("pktProto");
+  const srcTxt = document.getElementById("pktSrc");
+  const dstTxt = document.getElementById("pktDst");
+  const dataTxt = document.getElementById("pktData");
+
+  fitTextInEnvelope(protoTxt, config.proto || "PDU", 210);
+  fitTextInEnvelope(srcTxt, "SRC MAC: " + (config.src || "AA:AA:AA:11"), 210);
+  fitTextInEnvelope(dstTxt, "DST MAC: " + (config.dst || "CC:CC:CC:33"), 210);
+  fitTextInEnvelope(dataTxt, config.data || "", 210);
+
+  pkt.style.display = "block";
+  const steps = 80;
+
+  for(let i=0; i<=steps; i++){
+    await checkPause();
+    const t = i / steps;
+    const currentX = x1 + (x2-x1) * t;
+    const currentY = y1 + (y2-y1) * t;
+
+    pkt.setAttribute("transform", `translate(${currentX}, ${currentY})`);
+    await new Promise(r => setTimeout(r, duration / steps));
+  }
+}
+
+async function runSimulation(type){
+  if(isSimulating) return;
+  isSimulating = true;
+  const logPanel = document.getElementById("simLog");
+  logPanel.innerHTML = "";
+
+  if(type === 'VLAN10_SAME'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-PC_A ל-PC_C דרך ממשק Trunk מתוייג (802.1Q)";
+
+    log("<span class='lbl'>[1. Access Port Input]</span> PC_A שולח פריים ללא תיוג (Untagged) לפורט במתג Switch_1 שמוגדר כ-VLAN 10.");
+    await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
+      proto: "ETH FRAME (Untagged)",
+      src: "AA:AA:AA:11",
+      dst: "CC:CC:CC:33",
+      data: "Port Access: VLAN 10"
+    });
+
+    log("<span class='lbl'>[2. 802.1Q Tagging]</span> Switch_1 מוסיף תגית 802.1Q (VLAN ID: 10) ומעביר את הפריים על קו ה-Trunk.");
+    await animatePacketPDU(coords.SW1.x, coords.SW1.y, coords.SW2.x, coords.SW2.y, {
+      proto: "802.1Q TRUNK FRAME",
+      src: "AA:AA:AA:11",
+      dst: "CC:CC:CC:33",
+      data: "TAG: [VLAN 10] | Payload Data"
+    });
+
+    log("<span class='lbl'>[3. Untag & Deliver]</span> Switch_2 מקבל את הפריים, קורא את התגית (VLAN 10), מסיר אותה ומעביר ל-PC_C.");
+    await animatePacketPDU(coords.SW2.x, coords.SW2.y, coords.PCC.x, coords.PCC.y, {
+      proto: "ETH FRAME (Untagged)",
+      src: "AA:AA:AA:11",
+      dst: "CC:CC:CC:33",
+      data: "Delivered to PC_C"
+    });
+
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> התקשורת בתוך VLAN 10 הושלמה בהצלחה!");
+  }
+  else if(type === 'CROSS_VLAN_FAIL'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan20)'>חסימת Cross-VLAN:</b> PC_A ב-VLAN 10 מנסה לתקשר עם PC_B ב-VLAN 20";
+
+    log("<span class='lbl'>[1. Check VLAN]</span> PC_A (VLAN 10) שולח בקשה אל PC_B (VLAN 20).");
+    await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
+      proto: "ETH FRAME",
+      src: "AA:AA:AA:11",
+      dst: "BB:BB:BB:22",
+      data: "Target: VLAN 20"
+    });
+
+    log("<span class='lbl' style='color:var(--bad)'>[2. Dropped by Switch]</span> Switch_1 מזהה ש-PC_B נמצא ב-VLAN 20 ומחליט להפיל (Drop) את החבילה! אין נתב/Inter-VLAN Routing.");
+  }
+  else if(type === 'BROADCAST_VLAN'){
+    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת Broadcast ב-VLAN 10 בלבד (נעצר בפורטים של VLANs אחרים)";
+
+    log("<span class='lbl'>[1. Broadcast Origin]</span> PC_A שולח פריים Broadcast (FF:FF:FF:FF:FF:FF).");
+    await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
+      proto: "ARP BROADCAST",
+      src: "AA:AA:AA:11",
+      dst: "FF:FF:FF:FF:FF:FF",
+      data: "Who has 10.0.10.33?"
+    });
+
+    log("<span class='lbl'>[2. Trunk Forwarding]</span> Switch_1 מציף את החבילה ב-Trunk עם תגית VLAN 10, אך **אינו** מעביר ל-PC_B (VLAN 20)!");
+    await animatePacketPDU(coords.SW1.x, coords.SW1.y, coords.SW2.x, coords.SW2.y, {
+      proto: "802.1Q BROADCAST",
+      src: "AA:AA:AA:11",
+      dst: "FF:FF:FF:FF:FF:FF",
+      data: "TAG: [VLAN 10] Broadcast"
+    });
+
+    log("<span class='lbl'>[3. Reaches VLAN 10 Only]</span> Switch_2 מעביר את ה-Broadcast אך ורק ל-PC_C השייך ל-VLAN 10.");
+    await animatePacketPDU(coords.SW2.x, coords.SW2.y, coords.PCC.x, coords.PCC.y, {
+      proto: "ARP BROADCAST",
+      src: "AA:AA:AA:11",
+      dst: "FF:FF:FF:FF:FF:FF",
+      data: "Received by PC_C"
+    });
+
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> תחום השידור (Broadcast Domain) הוגבל בהצלחה ל-VLAN 10!");
+  }
+
+  document.getElementById("movingPacket").style.display = "none";
+  isSimulating = false;
+}
+
+function resetSim(){
+  isSimulating = false;
+  if(isPaused){ togglePause(); }
+  document.getElementById("selInfo").textContent = "בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית 802.1Q...";
+  document.getElementById("simLog").innerHTML = '<div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>';
+  document.getElementById("movingPacket").style.display = "none";
+}
+
+function log(text){
+  const panel = document.getElementById("simLog");
+  const line = document.createElement("div");
+  line.className = "log-line";
+  line.innerHTML = text;
+  panel.appendChild(line);
+  panel.scrollTop = panel.scrollHeight;
+}
+
+// CLI LAB ENGINE (TAB 4)
+const cliSteps = [
+  {
+    expect: /^vlan\s+10\s*$/i,
+    ok: "מעולה! יצרת את VLAN 10 בשרת המתג.",
+    prompt: "Switch(config-vlan)#",
+    nextInstruction: "<b>שלב 2:</b> תן ל-VLAN את השם Sales ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono'>name Sales</code>"
+  },
+  {
+    expect: /^name\s+Sales\s*$/i,
+    ok: "מצוין! הגדרת את שם ה-VLAN ל-Sales.",
+    prompt: "Switch(config-vlan)#",
+    nextInstruction: "<b>שלב 3:</b> הכנס להגדרות ממשק Gi0/1 ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono'>interface gigabitethernet0/1</code>"
+  },
+  {
+    expect: /^interface\s+gigabitethernet0\/1\s*$/i,
+    ok: "נכנסת להגדרות ממשק Gi0/1.",
+    prompt: "Switch(config-if)#",
+    nextInstruction: "<b>שלב 4 (אחרון):</b> הפוך את הממשק ל-Trunk ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono'>switchport mode trunk</code>"
+  },
+  {
+    expect: /^switchport\040mode\040trunk\s*$/i,
+    ok: "אלוף! הממשק הוגדר בהצלחה כ-Trunk מעביר תיוג 802.1Q! 🏆",
+    prompt: "Switch(config-if)#",
+    nextInstruction: "🎉 <b>כל הכבוד! השלמת את כל שלבי מעבדת ה-CLI בהצלחה!</b>"
+  }
+];
+
+let cliStep = 0;
+
+function submitCmd(){
+  const input = document.getElementById("termInput");
+  const val = input.value.trim();
+  const output = document.getElementById("termOutput");
+  const prompt = document.getElementById("termPrompt").textContent;
+
+  if(val === "") return;
+  if(cliStep >= cliSteps.length){ input.value = ""; return; }
+
+  const step = cliSteps[cliStep];
+  if(step.expect.test(val)){
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='text-green-400'>✔ " + step.ok + "</span>";
+    cliStep++;
+
+    document.getElementById("taskProgress").textContent = cliStep < cliSteps.length ? `שלב ${cliStep + 1} מתוך ${cliSteps.length}` : "הושלם בהצלחה! ✅";
+    document.getElementById("taskInstruction").innerHTML = step.nextInstruction;
+
+    if(cliStep < cliSteps.length){
+      document.getElementById("termPrompt").textContent = cliSteps[cliStep-1].prompt;
+    }
+  }else{
+    output.innerHTML += "\n" + prompt + " " + val + "\n<span class='text-red-400'>✘ פקודה לא מדויקת. נסה שוב (למשל: " + (cliStep===0?'vlan 10':cliStep===1?'name Sales':cliStep===2?'interface gigabitethernet0/1':'switchport mode trunk') + ")</span>";
+  }
+
+  input.value = "";
+  output.scrollTop = output.scrollHeight;
+}
+
+// 10 QUIZ QUESTIONS & ENGINE (TAB 5)
+const quizData = [
+  {
+    q: "1. באיזו שכבה במודל OSI פועל מתג תקשורת (Switch) סטנדרטי?",
+    opts: ["שכבה 1 (Physical)", "שכבה 2 (Data Link)", "שכבה 3 (Network)", "שכבה 4 (Transport)"],
+    correct: 1,
+    explain: "מתג סטנדרטי פועל בשכבה 2 ומנתב פרימים לפי כתובות MAC פיזיות."
+  },
+  {
+    q: "2. מה מבצע כרטיס רשת (NIC) בצד המקבל בשכבה 2 לפי האינפוגרפיקה?",
+    opts: ["בודק MAC ו-FCS, ואם לא תקין זורק לפח (Discards Packet)", "ממיר את האות החשמלי לגלי רדיו", "משנה את כתובות ה-IP של המקור", "מעביר את החבילה ישירות למעבד"],
+    correct: 0,
+    explain: "אם כתובת היעד אינה תואמת או שבדיקת התקינות (FCS) נכשלה, כרטיס הרשת זורק את המעטפה מיד."
+  },
+  {
+    q: "3. מה קורה ל-L2 Frame כשהוא עובר דרך נתב (Router)?",
+    opts: ["ה-Frame נשאר ללא שינוי לאורך כל הדרך", "הנתב מקלף את ה-L2 Frame הישן ועוטף ב-Frame חדש עם כתובות MAC מעודכנות", "הנתב מוסיף תגית VLAN 802.1Q", "הנתב מוחק את כתובת ה-IP"],
+    correct: 1,
+    explain: "ראוטר בשכבה 3 מקלף את מעטפת L2 בכניסה, ויוצר מעטפת L2 חדשה ביציאה לרשת הבאה."
+  },
+  {
+    q: "4. מהי המטרה המרכזית של יצירת VLANs ברשת הארגונית?",
+    opts: ["להגדיל את רוחב הפס של כבלי הנחושת", "לחלק את הרשת לתחומי שידור (Broadcast Domains) קטנים ונפרדים", "להחליף את כתובות ה-IP בכתובות MAC", "לבטל את הצורך במתגים"],
+    correct: 1,
+    explain: "VLANs מפצלים את המתג לרשתות לוגיות נפרדות ומבודדים שידורי Broadcast לשיפור ביצועים ואבטחה."
+  },
+  {
+    q: "5. מה תפקידו של ממשק Trunk ברשת המתגים?",
+    opts: ["לחבר מחשב קצה יחיד ל-VLAN מסוים", "להעביר תעבורה של מספר VLANs על גבי חיבור פיזי יחיד בין מתגים", "להקצות כתובות IP באופן אוטומטי", "לספק תקשורת אלחוטית"],
+    correct: 1,
+    explain: "פורט Trunk מקשר בין מתגים ומעביר תעבורה מתוייגת של מספר VLANs במקביל."
+  },
+  {
+    q: "6. איזו תוספת מוסיף פרוטוקול IEEE 802.1Q למעטפת ה-Ethernet?",
+    opts: ["כתובת IP חדשה", "תגית VLAN ID בגודל 4 בתים (Bytes)", "הצפנת SSL מלאה", "כתובת MAC של הנתב"],
+    correct: 1,
+    explain: "תקן 802.1Q מוסיף תגית של 4 בתים המכילה את מזהה ה-VLAN מעל קו ה-Trunk."
+  },
+  {
+    q: "7. כיצד מתג בונה ולומד את טבלת כתובות ה-MAC שלו?",
+    opts: ["לפי כתובת ה-MAC של היעד (Destination MAC)", "לפי כתובת ה-MAC של המקור (Source MAC) בכל פריים שנכנס לפורט", "על ידי פנייה לשרת ה-DNS", "באמצעות הגדרה ידנית בלבד"],
+    correct: 1,
+    explain: "המתג קורא את ה-Source MAC של כל פריים נכנס ורושם אותו בטבלה מול הפורט ממנו התקבל."
+  },
+  {
+    q: "8. מה יקרה אם מחשב ב-VLAN 10 ינסה לשלוח פריים למחשב ב-VLAN 20 המחוברים לאותו מתג L2?",
+    opts: ["המידע יעבור ללא בעיה", "המתג יזהה את ה-VLAN השונה ויפיל (Drop) את החבילה בהעדר נתב", "המתג יעביר את המחשבים אוטומטית לאותו VLAN", "החבילה תהפוך ל-Broadcast"],
+    correct: 1,
+    explain: "מתג שכבה 2 אינו מבצע ניתוב בין VLANs. ללא נתב (Inter-VLAN Routing) התעבורה תיחסם."
+  },
+  {
+    q: "9. איזו פקודה משמשת להגדרת פורט במתג להתחברות למחשב קצה ב-VLAN 10?",
+    opts: ["switchport mode trunk", "switchport access vlan 10", "ip address 10.0.0.1", "vlan trunk enable"],
+    correct: 1,
+    explain: "הפקודה switchport access vlan 10 משייכת פורט מסוג Access לרשת הווירטואלית המבוקשת."
+  },
+  {
+    q: "10. מהי תפקידה של שכבה 1 (Physical) בצד השולח לפי האינפוגרפיקה?",
+    opts: ["להמיר ביטים (0/1) לאותות פיזיים (מתח חשמלי, פולסים של אור, גלי רדיו)", "לבצע בדיקת FCS", "לבדוק את כתובת ה-MAC היעד", "לפענח את פורט ה-TCP"],
+    correct: 0,
+    explain: "שכבה 1 אחראית על ההמרה הפיזית של הביטים לאותות העוברים על גבי תווך התקשורת."
+  }
+];
+
+let quizAnswers = {};
+let totalScore = 0;
+
+function renderQuiz(){
+  const container = document.getElementById("quizContainer");
+  if(!container) return;
+  container.innerHTML = "";
+
+  quizData.forEach((item, qi) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "quiz-q";
+    qDiv.innerHTML = `<div class='text-xs font-mono text-stone-500 mb-1'>שאלה ${qi+1} מתוך ${quizData.length}</div><div class='font-bold text-stone-900 mb-2'>${item.q}</div>`;
+
+    const optsDiv = document.createElement("div");
+    optsDiv.className = "quiz-opts";
+
+    item.opts.forEach((opt, oi) => {
+      const b = document.createElement("div");
+      b.className = "quiz-opt";
+      b.textContent = opt;
+      b.onclick = () => answerQuiz(qi, oi);
+      optsDiv.appendChild(b);
+    });
+
+    qDiv.appendChild(optsDiv);
+
+    const explainDiv = document.createElement("div");
+    explainDiv.className = "quiz-explain";
+    explainDiv.id = "explain-" + qi;
+    explainDiv.textContent = item.explain;
+
+    qDiv.appendChild(explainDiv);
+    container.appendChild(qDiv);
+  });
+}
+
+function answerQuiz(qi, oi){
+  if(quizAnswers[qi] !== undefined) return;
+  const item = quizData[qi];
+  quizAnswers[qi] = (oi === item.correct);
+
+  if(oi === item.correct){ totalScore += 10; }
+
+  const opts = document.querySelectorAll(".quiz-q")[qi].querySelectorAll(".quiz-opt");
+  opts.forEach((el, i) => {
+    el.classList.add("disabled");
+    if(i === item.correct){ el.classList.add("correct"); }
+    else if(i === oi){ el.classList.add("wrong"); }
+  });
+
+  document.getElementById("explain-" + qi).classList.add("show");
+
+  if(Object.keys(quizAnswers).length === quizData.length){
+    showQuizResults();
+  }
+}
+
+function showQuizResults(){
+  const card = document.getElementById("quizScoreCard");
+  const scoreDisp = document.getElementById("scoreDisplay");
+  const feedback = document.getElementById("scoreFeedback");
+
+  scoreDisp.textContent = totalScore + " / 100";
+
+  if(totalScore === 100){
+    feedback.textContent = "🏆 ציון מושלם! הוכחת שליטה מוחלטת בניהול מתגים, VLANs, L1/L2 וממשקי Trunk!";
+  }else if(totalScore >= 80){
+    feedback.textContent = "🌟 כל הכבוד! הפגנת הבנה מעולה בשכבה 2, תהליכי Encapsulation וארכיטקטורת רשתות.";
+  }else if(totalScore >= 60){
+    feedback.textContent = "👍 עבודה טובה! עברת את המבדק, מומלץ לחזור על האינפוגרפיקות ועל תגית 802.1Q.";
+  }else{
+    feedback.textContent = "💡 מומלץ לעבור שוב על הטאבים הלימודיים והסימולטור ולהתנסות שנית.";
+  }
+
+  card.style.display = "block";
+  card.scrollIntoView({ behavior:"smooth" });
+}
+</script>
+
+</body>
+</html>
+
+
