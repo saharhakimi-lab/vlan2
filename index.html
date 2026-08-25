@@ -48,7 +48,12 @@ body{
   padding-bottom:120px;
 }
 
-.mono{ font-family:'Fira Code',monospace; }
+.mono{ 
+  font-family:'Fira Code',monospace; 
+  direction: ltr; 
+  display: inline-block;
+  unicode-bidi: embed;
+}
 
 .wrap{
   max-width:1100px;
@@ -83,6 +88,7 @@ header.hero{
   padding:4px 12px;
   border-radius:20px;
   margin-bottom:10px;
+  direction: ltr;
 }
 
 h1.title{
@@ -204,6 +210,7 @@ h1.title{
   font-family:'Fira Code',monospace;
   font-size:11px;
   transition:all 0.3s ease;
+  direction: ltr;
 }
 
 .port-box.vlan-10{ background:rgba(59,130,246,0.3); border-color:#3B82F6; color:#93C5FD; }
@@ -247,7 +254,7 @@ button.btn{
   border:none;
   border-radius:8px;
   padding:10px 18px;
-  font-family:'Rubik';
+  font-family:'Rubik', sans-serif;
   font-weight:600;
   font-size:14px;
   cursor:pointer;
@@ -258,6 +265,11 @@ button.btn:hover{ opacity:0.9; }
 button.btn:active{ transform:scale(0.97); }
 button.btn.secondary{ background:var(--panel3); color:var(--text); border:1px solid var(--border2); }
 button.btn.pause-btn{ background:#D97706; }
+button.btn.teacher-btn{ 
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.3);
+}
 
 /* SIMULATOR PDU */
 .pdu-envelope{ pointer-events:none; overflow:visible; }
@@ -289,6 +301,8 @@ button.btn.pause-btn{ background:#D97706; }
   max-height:220px;
   overflow-y:auto;
   color:#44403C;
+  direction: rtl;
+  text-align: right;
 }
 
 .log-line{ margin-bottom:8px; animation:fadeIn .3s ease; }
@@ -367,19 +381,19 @@ button.btn.pause-btn{ background:#D97706; }
 
   <!-- NAVIGATION TABS -->
   <nav class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('tab1')">
+    <button class="tab-btn active" onclick="switchTab('tab1', event)">
       <i data-lucide="sliders" class="w-4 h-4"></i> 1. הגדרת מתג ופורטים
     </button>
-    <button class="tab-btn" onclick="switchTab('tab2')">
+    <button class="tab-btn" onclick="switchTab('tab2', event)">
       <i data-lucide="image" class="w-4 h-4"></i> 2. ניתוח אינפוגרפיקות
     </button>
-    <button class="tab-btn" onclick="switchTab('tab3')">
+    <button class="tab-btn" onclick="switchTab('tab3', event)">
       <i data-lucide="activity" class="w-4 h-4"></i> 3. סימולטור תעבורה
     </button>
-    <button class="tab-btn" onclick="switchTab('tab4')">
+    <button class="tab-btn" onclick="switchTab('tab4', event)">
       <i data-lucide="terminal" class="w-4 h-4"></i> 4. מעבדת CLI
     </button>
-    <button class="tab-btn" onclick="switchTab('tab5')">
+    <button class="tab-btn" onclick="switchTab('tab5', event)">
       <i data-lucide="check-circle" class="w-4 h-4"></i> 5. מבדק מסכם
     </button>
   </nav>
@@ -388,10 +402,10 @@ button.btn.pause-btn{ background:#D97706; }
   <div id="tab1" class="tab-content active">
     <div class="card">
       <h2 class="text-lg font-bold text-stone-800 mb-2 flex items-center gap-2">
-        <i data-lucide="cpu" class="text-purple-600 w-5 h-5"></i> מהו מתג (Switch) וכיצד מגדירים VLANs בפורטים?
+        <i data-lucide="cpu" class="text-purple-600 w-5 h-5"></i> מהו מתג (<span class="mono">Switch</span>) וכיצד מגדירים <span class="mono">VLANs</span> בפורטים?
       </h2>
       <p class="text-stone-600 text-sm mb-4 leading-relaxed">
-        <b>מתג (Switch)</b> מחבר מכשירים ברשת המקומית (LAN) בשכבה 2. כדי להבטיח אבטחה וחלוקה לתחומי שידור (Broadcast Domains), אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות (VLANs). תרגל למטה הגדרת פורטים למתג Cisco Catalyst 2960!
+        <b>מתג (<span class="mono">Switch</span>)</b> מחבר מכשירים ברשת המקומית (<span class="mono">LAN</span>) בשכבה 2. כדי להבטיח אבטחה וחלוקה לתחומי שידור (<span class="mono">Broadcast Domains</span>), אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות (<span class="mono">VLANs</span>). תרגל למטה הגדרת פורטים למתג <span class="mono">Cisco Catalyst 2960</span>!
       </p>
 
       <!-- PHYSICAL SWITCH DISPLAY (FULL WIDTH & WHITE BACKGROUND) -->
@@ -399,9 +413,9 @@ button.btn.pause-btn{ background:#D97706; }
         <div class="flex justify-between items-center border-b border-slate-700 pb-2 mb-3">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-            <span class="font-bold text-sm font-mono text-slate-200">Cisco Catalyst 2960-S Series</span>
+            <span class="font-bold text-sm font-mono text-slate-200" dir="ltr">Cisco Catalyst 2960-S Series</span>
           </div>
-          <span class="text-xs text-slate-400 font-mono">24x FastEthernet + 2x Gigabit Trunk</span>
+          <span class="text-xs text-slate-400 font-mono" dir="ltr">24x FastEthernet + 2x Gigabit Trunk</span>
         </div>
 
         <div class="bg-white rounded border border-slate-700 p-2 mb-4">
@@ -417,12 +431,12 @@ button.btn.pause-btn{ background:#D97706; }
 
       <!-- CONFIGURATION CONTROLS -->
       <div class="bg-stone-50 border border-stone-200 p-4 rounded-xl mb-6">
-        <h3 class="font-bold text-stone-800 text-sm mb-3">🛠️ מחולל פקודות קונפיגורציה (VLAN Assignment):</h3>
+        <h3 class="font-bold text-stone-800 text-sm mb-3">🛠️ מחולל פקודות קונפיגורציה (<span class="mono">VLAN Assignment</span>):</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 text-sm">
           <div>
             <label class="block text-xs font-bold text-stone-600 mb-1">בחר VLAN / מחלקה:</label>
-            <select id="selVlan" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono">
+            <select id="selVlan" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono" dir="ltr">
               <option value="10">VLAN 10 - SALE (מכירות)</option>
               <option value="20">VLAN 20 - MNG (ניהול)</option>
               <option value="30">VLAN 30 - MON (ניטור)</option>
@@ -430,18 +444,18 @@ button.btn.pause-btn{ background:#D97706; }
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">מפורט (From Port):</label>
-            <select id="selStartPort" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono"></select>
+            <label class="block text-xs font-bold text-stone-600 mb-1">מפורט (<span class="mono">From Port</span>):</label>
+            <select id="selStartPort" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono" dir="ltr"></select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">עד פורט (To Port):</label>
-            <select id="selEndPort" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono"></select>
+            <label class="block text-xs font-bold text-stone-600 mb-1">עד פורט (<span class="mono">To Port</span>):</label>
+            <select id="selEndPort" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono" dir="ltr"></select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">מצב פורט (Port Mode):</label>
-            <select id="selPortMode" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono">
+            <label class="block text-xs font-bold text-stone-600 mb-1">מצב פורט (<span class="mono">Port Mode</span>):</label>
+            <select id="selPortMode" class="w-full bg-white border border-stone-300 rounded-lg p-2 font-mono" dir="ltr">
               <option value="access">Access (מכשיר קצה)</option>
               <option value="trunk">Trunk (חיבור בין מתגים)</option>
             </select>
@@ -457,9 +471,9 @@ button.btn.pause-btn{ background:#D97706; }
       <div>
         <div class="flex justify-between items-center mb-1">
           <span class="text-xs font-bold text-stone-700">💻 פקודות ה-Cisco IOS שנוצרו (בזמן אמת):</span>
-          <span class="text-xs text-purple-600 font-mono">Syntax: Cisco CLI</span>
+          <span class="text-xs text-purple-600 font-mono" dir="ltr">Syntax: Cisco CLI</span>
         </div>
-        <div class="terminal-box" id="cliTerminal">
+        <div class="terminal-box" id="cliTerminal" dir="ltr">
 Switch# configure terminal
 Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדרה...
         </div>
@@ -470,36 +484,36 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
   <!-- TAB 2: INFOGRAPHICS ANALYSIS -->
   <div id="tab2" class="tab-content">
     <div class="card mb-6">
-      <h2 class="text-xl font-bold text-stone-800 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף (OSI Encapsulation)</h2>
+      <h2 class="text-xl font-bold text-stone-800 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף (<span class="mono">OSI Encapsulation</span>)</h2>
       <div class="grid2 items-start">
         <img src="https://drive.google.com/thumbnail?id=1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3&sz=w1000" alt="אינפוגרפיקה 1" class="infographic-img">
         <div class="space-y-3 text-sm text-stone-700">
           <div class="bg-stone-50 p-3 rounded-lg border">
-            <b>💻 מחשב שולח (OS):</b> מבצע Encapsulation, מוסיף IP Packet Header.
+            <b>💻 מחשב שולח (<span class="mono">OS</span>):</b> מבצע <span class="mono">Encapsulation</span>, מוסיף <span class="mono">IP Packet Header</span>.
           </div>
           <div class="bg-stone-50 p-3 rounded-lg border">
-            <b>🎴 כרטיס רשת (NIC):</b> עוטף ב-L2 Frame עם MAC מקור ויעד.
+            <b>🎴 כרטיס רשת (<span class="mono">NIC</span>):</b> עוטף ב-<span class="mono">L2 Frame</span> עם <span class="mono">MAC</span> מקור ויעד.
           </div>
           <div class="bg-blue-50 p-3 rounded-lg border">
-            <b>🔀 סוויטש (Switch - L2):</b> מעביר לפי MAC בלבד - אינו משנה את המעטפת!
+            <b>🔀 סוויטש (<span class="mono">Switch - L2</span>):</b> מעביר לפי <span class="mono">MAC</span> בלבד - אינו משנה את המעטפת!
           </div>
           <div class="bg-amber-50 p-3 rounded-lg border">
-            <b>🌐 ראוטר (Router - L3):</b> מקלף את ה-L2 Frame הישן בכניסה, ויוצר L2 Frame חדש ביציאה!
+            <b>🌐 ראוטר (<span class="mono">Router - L3</span>):</b> מקלף את ה-<span class="mono">L2 Frame</span> הישן בכניסה, ויוצר <span class="mono">L2 Frame</span> חדש ביציאה!
           </div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <h2 class="text-xl font-bold text-stone-800 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת (NIC) בשכבות 1 ו-2</h2>
+      <h2 class="text-xl font-bold text-stone-800 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת (<span class="mono">NIC</span>) בשכבות 1 ו-2</h2>
       <div class="grid2 items-start">
         <img src="https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w1000" alt="אינפוגרפיקה 2" class="infographic-img">
         <div class="space-y-3 text-sm text-stone-700">
           <div class="bg-stone-50 p-3 rounded-lg border">
-            <b>📤 צד שולח:</b> L2 מוסיף FCS לבדיקת תקינות, L1 ממיר לאותות פיזיים (נחושת/אור/אלחוט).
+            <b>📤 צד שולח:</b> <span class="mono">L2</span> מוסיף <span class="mono">FCS</span> לבדיקת תקינות, <span class="mono">L1</span> ממיר לאותות פיזיים (נחושת/אור/אלחוט).
           </div>
           <div class="bg-stone-50 p-3 rounded-lg border">
-            <b>📥 צד מקבל:</b> בודק תאימות MAC ובדיקת FCS. אם ה-Frame פגום - נפלט מיד לזבל (Discard)!
+            <b>📥 צד מקבל:</b> בודק תאימות <span class="mono">MAC</span> ובדיקת <span class="mono">FCS</span>. אם ה-<span class="mono">Frame</span> פגום - נפלט מיד לזבל (<span class="mono">Discard</span>)!
           </div>
         </div>
       </div>
@@ -509,9 +523,9 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
   <!-- TAB 3: FULL SIMULATOR (4 PCS + DETAILED PDU) -->
   <div id="tab3" class="tab-content">
     <div class="card">
-      <h2 class="text-xl font-bold text-stone-800 mb-1">סימולטור VLANs, תיוג 802.1Q ומעקב חבילות (PDU)</h2>
+      <h2 class="text-xl font-bold text-stone-800 mb-1">סימולטור <span class="mono">VLANs</span>, תיוג <span class="mono">802.1Q</span> ומעקב חבילות (<span class="mono">PDU</span>)</h2>
       <p class="text-stone-600 text-sm mb-4">
-        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת (PDU) ובתיוג ה-VLAN על גבי קו ה-Trunk!
+        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת (<span class="mono">PDU</span>) ובתיוג ה-<span class="mono">VLAN</span> על גבי קו ה-<span class="mono">Trunk</span>!
       </p>
 
       <div class="diagram-wrap">
@@ -606,19 +620,19 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
 
         <div class="mt-3">
           <span id="selInfo" style="color:var(--muted); font-size:14px; font-weight:500;">
-            בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית 802.1Q...
+            בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית <span class="mono">802.1Q</span>...
           </span>
         </div>
 
         <div class="mt-3 flex flex-wrap gap-3">
           <button class="btn" onclick="runSimulation('VLAN10_SAME')">
-            תקשורת בתוך אותו VLAN (PC_A ➔ PC_C) 🚀
+            תקשורת בתוך אותו <span class="mono">VLAN</span> (<span class="mono">PC_A ➔ PC_C</span>) 🚀
           </button>
           <button class="btn" style="background:var(--vlan20);" onclick="runSimulation('CROSS_VLAN_FAIL')">
-            ניסיון גישה בין VLANs שונים (PC_A ➔ PC_B) 🛑
+            ניסיון גישה בין <span class="mono">VLANs</span> שונים (<span class="mono">PC_A ➔ PC_B</span>) 🛑
           </button>
           <button class="btn" style="background:#059669;" onclick="runSimulation('BROADCAST_VLAN')">
-            שידור Broadcast ב-VLAN 10 בלבד 📡
+            שידור <span class="mono">Broadcast</span> ב-<span class="mono">VLAN 10</span> בלבד 📡
           </button>
           <button class="btn pause-btn" id="pauseBtn" onclick="togglePause()">
             השהה ⏸️
@@ -638,16 +652,16 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
   <!-- TAB 4: INTERACTIVE CLI LAB -->
   <div id="tab4" class="tab-content">
     <div class="card">
-      <h2 class="text-xl font-bold text-stone-800 mb-2">מעבדת CLI - הגדרת VLAN ופורט Trunk במתג</h2>
+      <h2 class="text-xl font-bold text-stone-800 mb-2">מעבדת <span class="mono">CLI</span> - הגדרת <span class="mono">VLAN</span> ופורט <span class="mono">Trunk</span> במתג</h2>
       <p class="text-stone-600 text-sm mb-4">
-        תרגל הגדרת מתג Cisco דרך שורת הפקודה (CLI). הבא את המתג למצב העבודה המבוקש.
+        תרגל הגדרת מתג <span class="mono">Cisco</span> דרך שורת הפקודה (<span class="mono">CLI</span>). הבא את המתג למצב העבודה המבוקש.
       </p>
 
       <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-4 text-sm">
-        <div class="font-bold text-amber-900 mb-1" id="taskTitle">משימה: הגדרת VLAN 10 ופורט Trunk</div>
+        <div class="font-bold text-amber-900 mb-1" id="taskTitle">משימה: הגדרת <span class="mono">VLAN 10</span> ופורט <span class="mono">Trunk</span></div>
         <div class="text-xs text-amber-700 font-mono mb-2" id="taskProgress">שלב 1 מתוך 4</div>
         <div class="text-stone-700" id="taskInstruction">
-          <b>שלב 1:</b> יצור את VLAN 10 ע"י הקלדת הפקודה: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono">vlan 10</code>
+          <b>שלב 1:</b> יצור את <span class="mono">VLAN 10</span> ע"י הקלדת הפקודה: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">vlan 10</code>
         </div>
       </div>
 
@@ -671,14 +685,23 @@ Switch# configure terminal</div>
   <!-- TAB 5: 10-QUESTION QUIZ WITH SCORE CARD -->
   <div id="tab5" class="tab-content">
     <div class="card">
-      <h2 class="text-xl font-bold text-stone-800 mb-1">מבדק מסכם: מתגים, VLANs ותהליכי תקשורת</h2>
-      <p class="text-stone-600 text-sm mb-4">ענה על 10 השאלות הבאות כדי לבחון את שליטתך בחומר הנלמד:</p>
+      <div class="flex flex-wrap justify-between items-center mb-3 gap-2">
+        <div>
+          <h2 class="text-xl font-bold text-stone-800 mb-1">מבדק מסכם: מתגים, <span class="mono">VLANs</span> ותהליכי תקשורת</h2>
+          <p class="text-stone-600 text-sm">ענה על 10 השאלות הבאות כדי לבחון את שליטתך בחומר הנלמד:</p>
+        </div>
+        <!-- TEACHER BUTTON ADDED HERE -->
+        <button class="btn teacher-btn flex items-center gap-2" onclick="revealTeacherAnswers()">
+          <i data-lucide="key" class="w-4 h-4"></i>
+          <span>מורה</span>
+        </button>
+      </div>
 
       <div id="quizContainer"></div>
 
       <div id="quizScoreCard" class="score-card">
         <h3 class="text-2xl font-bold text-stone-900 mb-1">תוצאת המבחן המסכם</h3>
-        <div id="scoreDisplay" class="font-mono text-4xl font-extrabold text-purple-700 my-3">0 / 100</div>
+        <div id="scoreDisplay" class="font-mono text-4xl font-extrabold text-purple-700 my-3" dir="ltr">0 / 100</div>
         <p id="scoreFeedback" class="text-sm font-semibold text-stone-600 mb-0"></p>
       </div>
     </div>
@@ -729,7 +752,7 @@ Switch# configure terminal</div>
 
     <h3 class="text-lg font-black text-stone-900 mb-2">צריך עזרה במשימה?</h3>
     <p class="text-sm text-stone-600 mb-6 leading-relaxed">
-      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ב-VLANs וכוון אותך לפתרון המלא!
+      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ב-<span class="mono">VLANs</span> וכוון אותך לפתרון המלא!
     </p>
 
     <a
@@ -865,11 +888,13 @@ function generateConfig(){
   term.textContent = output;
 }
 
-function switchTab(tabId){
+function switchTab(tabId, ev){
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   
-  event.currentTarget.classList.add('active');
+  if(ev && ev.currentTarget){
+    ev.currentTarget.classList.add('active');
+  }
   document.getElementById(tabId).classList.add('active');
 }
 
@@ -995,7 +1020,7 @@ async function runSimulation(type){
   logPanel.innerHTML = "";
 
   if(type === 'VLAN10_SAME'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-PC_A ל-PC_C דרך ממשק Trunk מתוייג (802.1Q)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-<span class='mono'>PC_A</span> ל-<span class='mono'>PC_C</span> דרך ממשק <span class='mono'>Trunk</span> מתוייג (<span class='mono'>802.1Q</span>)";
 
     log("<span class='lbl'>[1. Access Port Input]</span> PC_A שולח פריים ללא תיוג (Untagged) לפורט במתג Switch_1 שמוגדר כ-VLAN 10.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
@@ -1024,7 +1049,7 @@ async function runSimulation(type){
     log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> התקשורת בתוך VLAN 10 הושלמה בהצלחה!");
   }
   else if(type === 'CROSS_VLAN_FAIL'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan20)'>חסימת Cross-VLAN:</b> PC_A ב-VLAN 10 מנסה לתקשר עם PC_B ב-VLAN 20";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan20)'>חסימת Cross-VLAN:</b> <span class='mono'>PC_A</span> ב-<span class='mono'>VLAN 10</span> מנסה לתקשר עם <span class='mono'>PC_B</span> ב-<span class='mono'>VLAN 20</span>";
 
     log("<span class='lbl'>[1. Check VLAN]</span> PC_A (VLAN 10) שולח בקשה אל PC_B (VLAN 20).");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
@@ -1037,7 +1062,7 @@ async function runSimulation(type){
     log("<span class='lbl' style='color:var(--bad)'>[2. Dropped by Switch]</span> Switch_1 מזהה ש-PC_B נמצא ב-VLAN 20 ומחליט להפיל (Drop) את החבילה! אין נתב/Inter-VLAN Routing.");
   }
   else if(type === 'BROADCAST_VLAN'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת Broadcast ב-VLAN 10 בלבד (נעצר בפורטים של VLANs אחרים)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת <span class='mono'>Broadcast</span> ב-<span class='mono'>VLAN 10</span> בלבד (נעצר בפורטים של <span class='mono'>VLANs</span> אחרים)";
 
     log("<span class='lbl'>[1. Broadcast Origin]</span> PC_A שולח פריים Broadcast (FF:FF:FF:FF:FF:FF).");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
@@ -1073,7 +1098,7 @@ async function runSimulation(type){
 function resetSim(){
   isSimulating = false;
   if(isPaused){ togglePause(); }
-  document.getElementById("selInfo").textContent = "בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית 802.1Q...";
+  document.getElementById("selInfo").innerHTML = "בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית <span class='mono'>802.1Q</span>...";
   document.getElementById("simLog").innerHTML = '<div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>';
   document.getElementById("movingPacket").style.display = "none";
 }
@@ -1093,19 +1118,19 @@ const cliSteps = [
     expect: /^vlan\s+10\s*$/i,
     ok: "מעולה! יצרת את VLAN 10 בשרת המתג.",
     prompt: "Switch(config-vlan)#",
-    nextInstruction: "<b>שלב 2:</b> תן ל-VLAN את השם Sales ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono'>name Sales</code>"
+    nextInstruction: "<b>שלב 2:</b> תן ל-VLAN את השם Sales ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>name Sales</code>"
   },
   {
     expect: /^name\s+Sales\s*$/i,
     ok: "מצוין! הגדרת את שם ה-VLAN ל-Sales.",
     prompt: "Switch(config-vlan)#",
-    nextInstruction: "<b>שלב 3:</b> הכנס להגדרות ממשק Gi0/1 ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono'>interface gigabitethernet0/1</code>"
+    nextInstruction: "<b>שלב 3:</b> הכנס להגדרות ממשק Gi0/1 ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>interface gigabitethernet0/1</code>"
   },
   {
     expect: /^interface\s+gigabitethernet0\/1\s*$/i,
     ok: "נכנסת להגדרות ממשק Gi0/1.",
     prompt: "Switch(config-if)#",
-    nextInstruction: "<b>שלב 4 (אחרון):</b> הפוך את הממשק ל-Trunk ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono'>switchport mode trunk</code>"
+    nextInstruction: "<b>שלב 4 (אחרון):</b> הפוך את הממשק ל-Trunk ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport mode trunk</code>"
   },
   {
     expect: /^switchport\040mode\040trunk\s*$/i,
@@ -1205,7 +1230,7 @@ const quizData = [
     q: "10. מהי תפקידה של שכבה 1 (Physical) בצד השולח לפי האינפוגרפיקה?",
     opts: ["להמיר ביטים (0/1) לאותות פיזיים (מתח חשמלי, פולסים של אור, גלי רדיו)", "לבצע בדיקת FCS", "לבדוק את כתובת ה-MAC היעד", "לפענח את פורט ה-TCP"],
     correct: 0,
-    explain: "שכבה 1 אחראית על ההמרה הפיזית של הביטים לאותות העוברים על גבי תווך התקשורת."
+    explain: "שכבה 1 אחראית על ההמרה הפיזית של הביטים לאותות העוברים על גבי תתוך התקשורת."
   }
 ];
 
@@ -1220,7 +1245,7 @@ function renderQuiz(){
   quizData.forEach((item, qi) => {
     const qDiv = document.createElement("div");
     qDiv.className = "quiz-q";
-    qDiv.innerHTML = `<div class='text-xs font-mono text-stone-500 mb-1'>שאלה ${qi+1} מתוך ${quizData.length}</div><div class='font-bold text-stone-900 mb-2'>${item.q}</div>`;
+    qDiv.innerHTML = `<div class='text-xs font-mono text-stone-500 mb-1' dir='rtl'>שאלה ${qi+1} מתוך ${quizData.length}</div><div class='font-bold text-stone-900 mb-2'>${item.q}</div>`;
 
     const optsDiv = document.createElement("div");
     optsDiv.className = "quiz-opts";
@@ -1266,6 +1291,20 @@ function answerQuiz(qi, oi){
   }
 }
 
+function revealTeacherAnswers(){
+  const pwd = prompt("אנא הזן סיסמת מורה:");
+  if(pwd === "sahar"){
+    quizData.forEach((item, qi) => {
+      if(quizAnswers[qi] === undefined){
+        answerQuiz(qi, item.correct);
+      }
+    });
+    alert("תשובות מורה נפתחו בהצלחה!");
+  } else if(pwd !== null) {
+    alert("סיסמה שגויה! הגישה נדחתה.");
+  }
+}
+
 function showQuizResults(){
   const card = document.getElementById("quizScoreCard");
   const scoreDisp = document.getElementById("scoreDisplay");
@@ -1290,5 +1329,3 @@ function showQuizResults(){
 
 </body>
 </html>
-
-
