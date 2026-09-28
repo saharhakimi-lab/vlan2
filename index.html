@@ -443,10 +443,10 @@ button.btn.teacher-btn{
   <div id="tab1" class="tab-content active">
     <div class="card">
       <h2 class="text-xl font-bold text-stone-800 mb-2 flex items-center gap-2">
-        <i data-lucide="cpu" class="text-purple-600 w-6 h-6"></i> מהו מתג (<span class="mono">Switch</span>) וכיצד מגדירים <span class="mono">VLANs</span> בפורטים?
+        <i data-lucide="cpu" class="text-purple-600 w-6 h-6"></i> מהו מתג <span class="mono">Switch</span> וכיצד מגדירים <span class="mono">VLANs</span> בפורטים?
       </h2>
       <p class="text-stone-600 text-base mb-4 leading-relaxed">
-        <b>מתג (<span class="mono">Switch</span>)</b> מחבר מכשירים ברשת המקומית (<span class="mono">LAN</span>) בשכבה 2 (<span class="mono">Layer 2</span>). כדי להבטיח אבטחה וחלוקה לתחומי שידור (<span class="mono">Broadcast Domains</span>), אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות (<span class="mono">VLANs</span>). תרגל למטה הגדרת פורטים למתג <span class="mono">Cisco Catalyst 2960</span>!
+        <b>מתג <span class="mono">Switch</span></b> מחבר מכשירים ברשת המקומית <span class="mono">LAN</span> בשכבה 2 <span class="mono">Layer 2</span>. כדי להבטיח אבטחה וחלוקה לתחומי שידור <span class="mono">Broadcast Domains</span>, אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות <span class="mono">VLANs</span>. תרגל למטה הגדרת פורטים למתג <span class="mono">Cisco Catalyst 2960</span>!
       </p>
 
       <!-- PHYSICAL SWITCH DISPLAY -->
@@ -464,7 +464,7 @@ button.btn.teacher-btn{
         </div>
 
         <!-- PORTS LAYOUT INTERACTIVE -->
-        <div class="text-sm text-slate-300 font-bold mb-1">מפת שיוך הפורטים במתג (<span class="mono">Ports 1-24</span> - אי-זוגי למעלה / זוגי למטה):</div>
+        <div class="text-sm text-slate-300 font-bold mb-1">מפת שיוך הפורטים במתג <span class="mono">Ports 1-24</span>, אי-זוגי למעלה, זוגי למטה:</div>
         <div class="ports-grid" id="portsGrid">
           <!-- Generated via JS -->
         </div>
@@ -472,33 +472,33 @@ button.btn.teacher-btn{
 
       <!-- CONFIGURATION CONTROLS -->
       <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl mb-6">
-        <h3 class="font-bold text-stone-800 text-base mb-3">🛠️ מחולל פקודות קונפיגורציה (<span class="mono">VLAN Assignment</span>):</h3>
+        <h3 class="font-bold text-stone-800 text-base mb-3">🛠️ מחולל פקודות קונפיגורציה <span class="mono">VLAN Assignment</span>:</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 text-base">
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">בחר <span class="mono">VLAN</span> / מחלקה:</label>
+            <label class="block text-xs font-bold text-stone-600 mb-1">בחר <span class="mono">VLAN</span>, מחלקה:</label>
             <select id="selVlan" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr">
-              <option value="10">VLAN 10 - SALE (מכירות)</option>
-              <option value="20">VLAN 20 - MNG (ניהול)</option>
-              <option value="30">VLAN 30 - MON (ניטור)</option>
+              <option value="10">VLAN 10 - SALE מכירות</option>
+              <option value="20">VLAN 20 - MNG ניהול</option>
+              <option value="30">VLAN 30 - MON ניטור</option>
             </select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">מפורט (<span class="mono">From Port</span>):</label>
+            <label class="block text-xs font-bold text-stone-600 mb-1">מפורט <span class="mono">From Port</span>:</label>
             <select id="selStartPort" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr"></select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">עד פורט (<span class="mono">To Port</span>):</label>
+            <label class="block text-xs font-bold text-stone-600 mb-1">עד פורט <span class="mono">To Port</span>:</label>
             <select id="selEndPort" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr"></select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">מצב פורט (<span class="mono">Port Mode</span>):</label>
+            <label class="block text-xs font-bold text-stone-600 mb-1">מצב פורט <span class="mono">Port Mode</span>:</label>
             <select id="selPortMode" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr">
-              <option value="access">Access (מכשיר קצה)</option>
-              <option value="trunk">Trunk (חיבור בין מתגים)</option>
+              <option value="access">Access מכשיר קצה</option>
+              <option value="trunk">Trunk חיבור בין מתגים</option>
             </select>
           </div>
         </div>
@@ -511,7 +511,7 @@ button.btn.teacher-btn{
       <!-- TERMINAL DISPLAY -->
       <div>
         <div class="flex justify-between items-center mb-1">
-          <span class="text-sm font-bold text-stone-700">💻 פקודות ה-<span class="mono">Cisco IOS</span> שנוצרו (בזמן אמת):</span>
+          <span class="text-sm font-bold text-stone-700">💻 פקודות ה-<span class="mono">Cisco IOS</span> שנוצרו בזמן אמת:</span>
           <span class="text-xs text-purple-600 font-mono" dir="ltr">Syntax: Cisco CLI</span>
         </div>
         <div class="terminal-box" id="cliTerminal" dir="ltr">
@@ -525,36 +525,36 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
   <!-- TAB 2: INFOGRAPHICS ANALYSIS -->
   <div id="tab2" class="tab-content">
     <div class="card mb-6">
-      <h2 class="text-2xl font-bold text-stone-800 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף (<span class="mono">OSI Encapsulation</span>)</h2>
+      <h2 class="text-2xl font-bold text-stone-800 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף <span class="mono">OSI Encapsulation</span></h2>
       <div class="grid2 items-start">
         <img src="https://drive.google.com/thumbnail?id=1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3&sz=w1000" alt="אינפוגרפיקה 1" class="infographic-img cursor-pointer" onclick="openImageModal(this.src)">
         <div class="space-y-3 text-base text-stone-700">
           <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>💻 מחשב שולח (<span class="mono">OS</span>):</b> מבצע <span class="mono">Encapsulation</span>, מוסיף <span class="mono">IP Packet Header</span> בשכבה 3 (<span class="mono">Network Layer</span>).
+            <b>💻 מחשב שולח <span class="mono">OS</span>:</b> מבצע <span class="mono">Encapsulation</span>, מוסיף <span class="mono">IP Packet Header</span> בשכבה 3 <span class="mono">Network Layer</span>.
           </div>
           <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>🎴 כרטיס רשת (<span class="mono">NIC</span>):</b> עוטף ב-<span class="mono">L2 Frame</span> בשכבת <span class="mono">Data Link</span> עם כתובות <span class="mono">MAC</span> מקור ויעד.
+            <b>🎴 כרטיס רשת <span class="mono">NIC</span>:</b> עוטף ב-<span class="mono">L2 Frame</span> בשכבת <span class="mono">Data Link</span> עם כתובות <span class="mono">MAC</span> מקור ויעד.
           </div>
           <div class="bg-blue-50 p-4 rounded-lg border">
-            <b>🔀 סוויטש (<span class="mono">Switch - L2</span>):</b> מעביר לפי כתובות <span class="mono">MAC</span> בלבד - אינו משנה את המעטפת!
+            <b>🔀 סוויטש <span class="mono">Switch - L2</span>:</b> מעביר לפי כתובות <span class="mono">MAC</span> בלבד, אינו משנה את המעטפת!
           </div>
           <div class="bg-amber-50 p-4 rounded-lg border">
-            <b>🌐 ראוטר (<span class="mono">Router - L3</span>):</b> מקלף את ה-<span class="mono">L2 Frame</span> הישן בכניסה, ויוצר <span class="mono">L2 Frame</span> חדש ביציאה!
+            <b>🌐 ראוטר <span class="mono">Router - L3</span>:</b> מקלף את ה-<span class="mono">L2 Frame</span> הישן בכניסה, ויוצר <span class="mono">L2 Frame</span> חדש ביציאה!
           </div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <h2 class="text-2xl font-bold text-stone-800 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת (<span class="mono">NIC</span>) בשכבות 1 ו-2</h2>
+      <h2 class="text-2xl font-bold text-stone-800 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת <span class="mono">NIC</span> בשכבות 1 ו-2</h2>
       <div class="grid2 items-start">
         <img src="https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w1000" alt="אינפוגרפיקה 2" class="infographic-img cursor-pointer" onclick="openImageModal(this.src)">
         <div class="space-y-3 text-base text-stone-700">
           <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>📤 צד שולח:</b> בשכבה 2 (<span class="mono">L2</span>) מוסיף <span class="mono">FCS</span> לבדיקת תקינות, ובשכבה 1 (<span class="mono">L1</span>) ממיר לאותות פיזיים (נחושת/אור/אלחוט).
+            <b>📤 צד שולח:</b> בשכבה 2 <span class="mono">L2</span> מוסיף <span class="mono">FCS</span> לבדיקת תקינות, ובשכבה 1 <span class="mono">L1</span> ממיר לאותות פיזיים כגון נחושת, אור או אלחוט.
           </div>
           <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>📥 צד מקבל:</b> בודק תאימות <span class="mono">MAC</span> ובדיקת תקינות <span class="mono">FCS</span>. אם ה-<span class="mono">Frame</span> פגום - נפלט מיד לזבל (<span class="mono">Discard</span>)!
+            <b>📥 צד מקבל:</b> בודק תאימות <span class="mono">MAC</span> ובדיקת תקינות <span class="mono">FCS</span>. אם ה-<span class="mono">Frame</span> פגום, הוא נפלט מיד לזבל <span class="mono">Discard</span>!
           </div>
         </div>
       </div>
@@ -564,9 +564,9 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
   <!-- TAB 3: FULL SIMULATOR -->
   <div id="tab3" class="tab-content">
     <div class="card">
-      <h2 class="text-2xl font-bold text-stone-800 mb-1">סימולטור <span class="mono">VLANs</span>, תיוג <span class="mono">802.1Q</span> ומעקב חבילות (<span class="mono">PDU</span>)</h2>
+      <h2 class="text-2xl font-bold text-stone-800 mb-1">סימולטור <span class="mono">VLANs</span>, תיוג <span class="mono">802.1Q</span> ומעקב חבילות <span class="mono">PDU</span></h2>
       <p class="text-stone-600 text-base mb-4">
-        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת (<span class="mono">PDU</span>) ובתיוג ה-<span class="mono">VLAN</span> על גבי קו ה-<span class="mono">Trunk</span>!
+        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת <span class="mono">PDU</span> ובתיוג ה-<span class="mono">VLAN</span> על גבי קו ה-<span class="mono">Trunk</span>!
       </p>
 
       <div class="diagram-wrap">
@@ -582,7 +582,7 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
           <line x1="180" y1="400" x2="350" y2="260" stroke="#F97316" stroke-width="3" />
 
           <line x1="350" y1="260" x2="750" y2="260" stroke="#2563EB" stroke-width="6" stroke-dasharray="8 4"/>
-          <text x="550" y="245" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="13" font-weight="700">Trunk Link (802.1Q Tagged)</text>
+          <text x="550" y="245" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="13" font-weight="700">Trunk Link 802.1Q Tagged</text>
 
           <line x1="750" y1="260" x2="920" y2="120" stroke="#3B82F6" stroke-width="3" />
           <line x1="750" y1="260" x2="920" y2="400" stroke="#EAB308" stroke-width="3" />
@@ -606,7 +606,7 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
           <!-- PC A (VLAN 10) -->
           <g transform="translate(80, 70)">
             <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_A (Sales)</text>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_A Sales</text>
             <text x="100" y="45" text-anchor="middle" fill="#3B82F6" font-family="Fira Code" font-size="11" font-weight="700">VLAN 10</text>
             <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.10.11</text>
             <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: AA:AA:AA:11</text>
@@ -615,7 +615,7 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
           <!-- PC B (VLAN 20) -->
           <g transform="translate(80, 355)">
             <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_B (HR)</text>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_B HR</text>
             <text x="100" y="45" text-anchor="middle" fill="#F97316" font-family="Fira Code" font-size="11" font-weight="700">VLAN 20</text>
             <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.20.22</text>
             <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: BB:BB:BB:22</text>
@@ -624,7 +624,7 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
           <!-- PC C (VLAN 10) -->
           <g transform="translate(820, 70)">
             <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_C (Sales)</text>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_C Sales</text>
             <text x="100" y="45" text-anchor="middle" fill="#3B82F6" font-family="Fira Code" font-size="11" font-weight="700">VLAN 10</text>
             <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.10.33</text>
             <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: CC:CC:CC:33</text>
@@ -633,7 +633,7 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
           <!-- PC D (VLAN 30) -->
           <g transform="translate(820, 355)">
             <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#EAB308" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_D (IT)</text>
+            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_D IT</text>
             <text x="100" y="45" text-anchor="middle" fill="#EAB308" font-family="Fira Code" font-size="11" font-weight="700">VLAN 30</text>
             <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.30.44</text>
             <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: DD:DD:DD:44</text>
@@ -667,10 +667,10 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
 
         <div class="mt-4 flex flex-wrap gap-3">
           <button class="btn" onclick="runSimulation('VLAN10_SAME')">
-            תקשורת בתוך אותו <span class="mono">VLAN</span> (<span class="mono">PC_A ➔ PC_C</span>) 🚀
+            תקשורת בתוך אותו <span class="mono">VLAN</span>, מ-<span class="mono">PC_A</span> ל-<span class="mono">PC_C</span> 🚀
           </button>
           <button class="btn" style="background:var(--vlan20);" onclick="runSimulation('CROSS_VLAN_FAIL')">
-            ניסיון גישה בין <span class="mono">VLANs</span> שונים (<span class="mono">PC_A ➔ PC_B</span>) 🛑
+            ניסיון גישה בין <span class="mono">VLANs</span> שונים, מ-<span class="mono">PC_A</span> ל-<span class="mono">PC_B</span> 🛑
           </button>
           <button class="btn" style="background:#059669;" onclick="runSimulation('BROADCAST_VLAN')">
             שידור <span class="mono">Broadcast</span> ב-<span class="mono">VLAN 10</span> בלבד 📡
@@ -695,14 +695,14 @@ Switch(config)# ! בחר פרמטרים למעלה ולחץ על החל הגדר
     <div class="card">
       <h2 class="text-2xl font-bold text-stone-800 mb-2">מעבדת <span class="mono">CLI</span> - הגדרת <span class="mono">VLAN</span> ופורט <span class="mono">Trunk</span> במתג</h2>
       <p class="text-stone-600 text-base mb-4">
-        תרגל הגדרת מתג <span class="mono">Cisco Catalyst</span> דרך שורת הפקודה במדויק כמו ב-<span class="mono">Cisco Packet Tracer</span>. הסימולטור תומך בקיצורי פקודות ובמצבי היררכיה מלאים (<span class="mono">User EXEC</span>, <span class="mono">Privileged EXEC</span>, <span class="mono">Global Config</span>, <span class="mono">VLAN Config</span>, <span class="mono">Interface Config</span>).
+        תרגל הגדרת מתג <span class="mono">Cisco Catalyst</span> דרך שורת הפקודה במדויק כמו ב-<span class="mono">Cisco Packet Tracer</span>. הסימולטור תומך בקיצורי פקודות ובמצבי היררכיה מלאים: <span class="mono">User EXEC</span>, <span class="mono">Privileged EXEC</span>, <span class="mono">Global Config</span>, <span class="mono">VLAN Config</span>, <span class="mono">Interface Config</span>.
       </p>
 
       <div class="bg-amber-50 border border-amber-200 p-5 rounded-xl mb-4 text-base">
         <div class="font-bold text-amber-900 text-lg mb-1" id="taskTitle">משימה: הגדרת <span class="mono">VLAN 10</span>, מעבר לממשק <span class="mono">FastEthernet 0/2</span> והגדרת <span class="mono">Trunk</span></div>
         <div class="text-sm text-amber-700 font-mono mb-2" id="taskProgress">שלב 1 מתוך 7</div>
         <div class="text-stone-700" id="taskInstruction">
-          <b>שלב 1:</b> היכנס למצב מוביליג' (<span class="mono">Privileged EXEC Mode</span>) ע"י הפקודה: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">enable</code> (או בקיצור: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">en</code>)
+          <b>שלב 1:</b> היכנס למצב מוביליג', <span class="mono">Privileged EXEC Mode</span>, על ידי הפקודה: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">enable</code>, או בקיצור: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">en</code>.
         </div>
       </div>
 
@@ -727,16 +727,16 @@ Switch></div>
       <div class="mt-6 bg-slate-900 text-slate-100 border border-slate-700 p-5 rounded-xl">
         <h3 class="font-bold text-lg text-purple-400 mb-2 flex items-center gap-2">
           <i data-lucide="router" class="w-5 h-5"></i>
-          💡 רוצה לעבור לראוטר? הדרכה לתלמיד להגדרת <span class="mono">Inter-VLAN Routing</span> (<span class="mono">Router-on-a-Stick</span>)
+          💡 רוצה לעבור לראוטר? הדרכה לתלמיד להגדרת <span class="mono">Inter-VLAN Routing</span>, שהוא <span class="mono">Router-on-a-Stick</span>
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-3">
-          כאשר רוצים לאפשר תקשורת בין <span class="mono">VLANs</span> שונים (למשל מ-<span class="mono">VLAN 10</span> ל-<span class="mono">VLAN 20</span>), מתג שכבה 2 אינו מספיק ונדרש **נתב (<span class="mono">Router</span>)**. ב-<span class="mono">Packet Tracer</span>, כדי לעבור לעבוד על הנתב:
+          כאשר רוצים לאפשר תקשורת בין <span class="mono">VLANs</span> שונים, למשל מ-<span class="mono">VLAN 10</span> ל-<span class="mono">VLAN 20</span>, מתג שכבה 2 אינו מספיק ונדרש נתב <span class="mono">Router</span>. ב-<span class="mono">Packet Tracer</span>, כדי לעבור לעבוד על הנתב:
         </p>
         <ol class="list-decimal list-inside text-sm text-slate-300 space-y-2 mb-3">
-          <li>לחץ על רכיב ה-<b><span class="mono">Router</span></b> בטופולוגיה ובחר בטאב <b><span class="mono">CLI</span></b>.</li>
-          <li>עבור למצב הגדרה גלובלי: <code class="text-emerald-400 font-mono" dir="ltr">enable</code> ואז <code class="text-emerald-400 font-mono" dir="ltr">configure terminal</code> (מצב הפרומפט יהפוך ל-<span class="mono">Router(config)#</span>).</li>
+          <li>לחץ על רכיב ה-<span class="mono">Router</span> בטופולוגיה ובחר בטאב <span class="mono">CLI</span>.</li>
+          <li>עבור למצב הגדרה גלובלי: <code class="text-emerald-400 font-mono" dir="ltr">enable</code> ואז <code class="text-emerald-400 font-mono" dir="ltr">configure terminal</code>, מצב הפרומפט יהפוך ל-<span class="mono">Router(config)#</span>.</li>
           <li>הפעל את הממשק הפיזי המחובר ל-Trunk של הסוויטש: <code class="text-emerald-400 font-mono" dir="ltr">interface gigabitethernet 0/0/0</code> ואז <code class="text-emerald-400 font-mono" dir="ltr">no shutdown</code>.</li>
-          <li>יצור תת-ממשק (<span class="mono">Sub-interface</span>) עבור <span class="mono">VLAN 10</span>: <code class="text-emerald-400 font-mono" dir="ltr">interface gigabitethernet 0/0/0.10</code> (הפרומפט ישתנה ל-<span class="mono">Router(config-subif)#</span>).</li>
+          <li>צור תת-ממשק <span class="mono">Sub-interface</span> עבור <span class="mono">VLAN 10</span>: <code class="text-emerald-400 font-mono" dir="ltr">interface gigabitethernet 0/0/0.10</code>, הפרומפט ישתנה ל-<span class="mono">Router(config-subif)#</span>.</li>
           <li>שייך את תיוג ה-802.1Q: <code class="text-emerald-400 font-mono" dir="ltr">encapsulation dot1Q 10</code>.</li>
           <li>הגדר כתובת IP שתשמש כ-Default Gateway: <code class="text-emerald-400 font-mono" dir="ltr">ip address 10.0.10.1 255.255.255.0</code>.</li>
         </ol>
@@ -791,7 +791,7 @@ Switch></div>
             </div>
 
             <div class="info-thumb-card" onclick="openImageModal('https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w1000')">
-              <div class="text-xs font-bold text-stone-700 mb-1">2. תפקיד כרטיס הרשת (<span class="mono">NIC</span>)</div>
+              <div class="text-xs font-bold text-stone-700 mb-1">2. תפקיד כרטיס הרשת <span class="mono">NIC</span></div>
               <img src="https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w600" alt="אינפוגרפיקה 2" class="w-full h-auto rounded border">
             </div>
           </div>
@@ -1127,9 +1127,9 @@ async function runSimulation(type){
   logPanel.innerHTML = "";
 
   if(type === 'VLAN10_SAME'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-<span class='mono'>PC_A</span> ל-<span class='mono'>PC_C</span> דרך ממשק <span class='mono'>Trunk</span> מתוייג (<span class='mono'>802.1Q</span>)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-<span class='mono'>PC_A</span> ל-<span class='mono'>PC_C</span> דרך ממשק <span class='mono'>Trunk</span> מתוייג, <span class='mono'>802.1Q</span>";
 
-    log("<span class='lbl'>[1. Access Port Input]</span> PC_A שולח פריים ללא תיוג (Untagged) לפורט במתג Switch_1 שמוגדר כ-VLAN 10.");
+    log("<span class='lbl'>[1. Access Port Input]</span> PC_A שולח פריים ללא תיוג, Untagged, לפורט במתג Switch_1 שמוגדר כ-VLAN 10.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
       proto: "ETH FRAME (Untagged)",
       src: "AA:AA:AA:11",
@@ -1137,7 +1137,7 @@ async function runSimulation(type){
       data: "Port Access: VLAN 10"
     });
 
-    log("<span class='lbl'>[2. 802.1Q Tagging]</span> Switch_1 מוסיף תגית 802.1Q (VLAN ID: 10) ומעביר את הפריים על קו ה-Trunk.");
+    log("<span class='lbl'>[2. 802.1Q Tagging]</span> Switch_1 מוסיף תגית 802.1Q, VLAN ID: 10, ומעביר את הפריים על קו ה-Trunk.");
     await animatePacketPDU(coords.SW1.x, coords.SW1.y, coords.SW2.x, coords.SW2.y, {
       proto: "802.1Q TRUNK FRAME",
       src: "AA:AA:AA:11",
@@ -1145,7 +1145,7 @@ async function runSimulation(type){
       data: "TAG: [VLAN 10] | Payload Data"
     });
 
-    log("<span class='lbl'>[3. Untag & Deliver]</span> Switch_2 מקבל את הפריים, קורא את התגית (VLAN 10), מסיר אותה ומעביר ל-PC_C.");
+    log("<span class='lbl'>[3. Untag & Deliver]</span> Switch_2 מקבל את הפריים, קורא את התגית, VLAN 10, מסיר אותה ומעביר ל-PC_C.");
     await animatePacketPDU(coords.SW2.x, coords.SW2.y, coords.PCC.x, coords.PCC.y, {
       proto: "ETH FRAME (Untagged)",
       src: "AA:AA:AA:11",
@@ -1158,7 +1158,7 @@ async function runSimulation(type){
   else if(type === 'CROSS_VLAN_FAIL'){
     document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan20)'>חסימת Cross-VLAN:</b> <span class='mono'>PC_A</span> ב-<span class='mono'>VLAN 10</span> מנסה לתקשר עם <span class='mono'>PC_B</span> ב-<span class='mono'>VLAN 20</span>";
 
-    log("<span class='lbl'>[1. Check VLAN]</span> PC_A (VLAN 10) שולח בקשה אל PC_B (VLAN 20).");
+    log("<span class='lbl'>[1. Check VLAN]</span> PC_A, VLAN 10, שולח בקשה אל PC_B, VLAN 20.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
       proto: "ETH FRAME",
       src: "AA:AA:AA:11",
@@ -1166,12 +1166,12 @@ async function runSimulation(type){
       data: "Target: VLAN 20"
     });
 
-    log("<span class='lbl' style='color:var(--bad)'>[2. Dropped by Switch]</span> Switch_1 מזהה ש-PC_B נמצא ב-VLAN 20 ומחליט להפיל (Drop) את החבילה! אין נתב/Inter-VLAN Routing.");
+    log("<span class='lbl' style='color:var(--bad)'>[2. Dropped by Switch]</span> Switch_1 מזהה ש-PC_B נמצא ב-VLAN 20 ומחליט להפיל, Drop, את החבילה! אין נתב או Inter-VLAN Routing.");
   }
   else if(type === 'BROADCAST_VLAN'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת <span class='mono'>Broadcast</span> ב-<span class='mono'>VLAN 10</span> בלבד (נעצר בפורטים של <span class='mono'>VLANs</span> אחרים)";
+    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת <span class='mono'>Broadcast</span> ב-<span class='mono'>VLAN 10</span> בלבד, נעצר בפורטים של <span class='mono'>VLANs</span> אחרים";
 
-    log("<span class='lbl'>[1. Broadcast Origin]</span> PC_A שולח פריים Broadcast (FF:FF:FF:FF:FF:FF).");
+    log("<span class='lbl'>[1. Broadcast Origin]</span> PC_A שולח פריים Broadcast, FF:FF:FF:FF:FF:FF.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
       proto: "ARP BROADCAST",
       src: "AA:AA:AA:11",
@@ -1179,7 +1179,7 @@ async function runSimulation(type){
       data: "Who has 10.0.10.33?"
     });
 
-    log("<span class='lbl'>[2. Trunk Forwarding]</span> Switch_1 מציף את החבילה ב-Trunk עם תגית VLAN 10, אך **אינו** מעביר ל-PC_B (VLAN 20)!");
+    log("<span class='lbl'>[2. Trunk Forwarding]</span> Switch_1 מציף את החבילה ב-Trunk עם תגית VLAN 10, אך אינו מעביר ל-PC_B, VLAN 20!");
     await animatePacketPDU(coords.SW1.x, coords.SW1.y, coords.SW2.x, coords.SW2.y, {
       proto: "802.1Q BROADCAST",
       src: "AA:AA:AA:11",
@@ -1195,7 +1195,7 @@ async function runSimulation(type){
       data: "Received by PC_C"
     });
 
-    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> תחום השידור (Broadcast Domain) הוגבל בהצלחה ל-VLAN 10!");
+    log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> תחום השידור, Broadcast Domain, הוגבל בהצלחה ל-VLAN 10!");
   }
 
   document.getElementById("movingPacket").style.display = "none";
@@ -1222,45 +1222,45 @@ function log(text){
 const cliSteps = [
   {
     expect: /^(enable|en)$/i,
-    ok: "מעולה! עברת למצב מוביליג' (Privileged EXEC Mode).",
+    ok: "מעולה! עברת למצב מוביליג', Privileged EXEC Mode.",
     nextPrompt: "Switch#",
-    nextInstruction: "<b>שלב 2:</b> הכנס למצב הקונפיגורציה הגלובלי ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>configure terminal</code> (או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>conf t</code>)"
+    nextInstruction: "<b>שלב 2:</b> הכנס למצב הקונפיגורציה הגלובלי על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>configure terminal</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>conf t</code>."
   },
   {
     expect: /^(configure\s+terminal|conf\s+t)$/i,
     ok: "מעולה! נכנסת למצב Global Configuration.",
     nextPrompt: "Switch(config)#",
-    nextInstruction: "<b>שלב 3:</b> יצור את VLAN 10 ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>vlan 10</code>"
+    nextInstruction: "<b>שלב 3:</b> צור את VLAN 10 על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>vlan 10</code>."
   },
   {
     expect: /^vlan\s+10$/i,
     ok: "מצוין! יצרת את VLAN 10 ועברת למצב VLAN Configuration.",
     nextPrompt: "Switch(config-vlan)#",
-    nextInstruction: "<b>שלב 4:</b> תן ל-VLAN את השם Sales ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>name Sales</code>"
+    nextInstruction: "<b>שלב 4:</b> תן ל-VLAN את השם Sales על ידי הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>name Sales</code>."
   },
   {
     expect: /^(name\s+Sales|na\s+Sales)$/i,
     ok: "אלוף! הגדרת את שם ה-VLAN ל-Sales.",
     nextPrompt: "Switch(config-vlan)#",
-    nextInstruction: "<b>שלב 5:</b> צא ממצב VLAN Configuration בחזרה ל-Global Config ע\"י הקלדת: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>exit</code>"
+    nextInstruction: "<b>שלב 5:</b> צא ממצב VLAN Configuration בחזרה ל-Global Config על ידי הקלדת: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>exit</code>."
   },
   {
     expect: /^(exit|ex)$/i,
     ok: "מצוין! יצאת ממצב VLAN Configuration וחזרת למצב Global Configuration.",
     nextPrompt: "Switch(config)#",
-    nextInstruction: "<b>שלב 6:</b> נדרש להגדיר את ממשק הטראנק. הכנס להגדרות הממשק FastEthernet 0/2 ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>interface fastethernet 0/2</code> (או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>int fa0/2</code>)"
+    nextInstruction: "<b>שלב 6:</b> נדרש להגדיר את ממשק הטראנק. הכנס להגדרות הממשק FastEthernet 0/2 על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>interface fastethernet 0/2</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>int fa0/2</code>."
   },
   {
     expect: /^(interface\s+(fastethernet0\/2|fa0\/2|f0\/2)|int\s+(fastethernet0\/2|fa0\/2|f0\/2))$/i,
-    ok: "נכנסת להגדרות ממשק FastEthernet 0/2 (Interface Config Mode).",
+    ok: "נכנסת להגדרות ממשק FastEthernet 0/2, Interface Config Mode.",
     nextPrompt: "Switch(config-if)#",
-    nextInstruction: "<b>שלב 7:</b> הגדר את הפורט כ-Trunk ע\"י הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport mode trunk</code> (או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>sw mo tr</code>)"
+    nextInstruction: "<b>שלב 7:</b> הגדר את הפורט כ-Trunk על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport mode trunk</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>sw mo tr</code>."
   },
   {
     expect: /^(switchport\s+mode\s+trunk|sw\s+mo\s+tr|sw\s+mode\s+trunk)$/i,
     ok: "מעולה! הפורט הוגדר כ-Trunk מעביר תיוג 802.1Q.",
     nextPrompt: "Switch(config-if)#",
-    nextInstruction: "<b>שלב 8 (אחרון):</b> אפשר ל-VLAN 10 לעבור בממשק ה-Trunk ע\"י הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport trunk allowed vlan 10</code> (או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>sw tr al vlan 10</code>)"
+    nextInstruction: "<b>שלב 8, אחרון:</b> אפשר ל-VLAN 10 לעבור בממשק ה-Trunk על ידי הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport trunk allowed vlan 10</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>sw tr al vlan 10</code>."
   },
   {
     expect: /^(switchport\s+trunk\s+allowed\s+vlan\s+(10|add\s+10)|sw\s+tr\s+al\s+vlan\s+(10|add\s+10))$/i,
@@ -1306,7 +1306,7 @@ function submitCmd(){
       'switchport trunk allowed vlan 10'
     ];
     let hint = hints[cliStep] || '';
-    output.innerHTML += "\n" + currentPrompt + " " + val + "\n<span class='text-red-400'>✘ פקודה לא מדויקת. נסה שוב (למשל: " + hint + " או בקיצור המקובל)</span>";
+    output.innerHTML += "\n" + currentPrompt + " " + val + "\n<span class='text-red-400'>✘ פקודה לא מדויקת. נסה שוב, למשל: " + hint + " או בקיצור המקובל</span>";
   }
 
   input.value = "";
@@ -1315,26 +1315,26 @@ function submitCmd(){
 
 const quizData = [
   {
-    q: "1. באיזו שכבה במודל OSI פועל מתג תקשורת (Switch) סטנדרטי?",
-    opts: ["שכבה 1 (Physical)", "שכבה 2 (Data Link)", "שכבה 3 (Network)", "שכבה 4 (Transport)"],
+    q: "1. באיזו שכבה במודל OSI פועל מתג תקשורת, Switch, סטנדרטי?",
+    opts: ["שכבה 1 Physical", "שכבה 2 Data Link", "שכבה 3 Network", "שכבה 4 Transport"],
     correct: 1,
     explain: "מתג סטנדרטי פועל בשכבה 2 ומנתב פרימים לפי כתובות MAC פיזיות."
   },
   {
-    q: "2. מה מבצע כרטיס רשת (NIC) בצד המקבל בשכבה 2 לפי האינפוגרפיקה?",
-    opts: ["בודק MAC ו-FCS, ואם לא תקין זורק לפח (Discards Packet)", "ממיר את האות החשמלי לגלי רדיו", "משנה את כתובות ה-IP של המקור", "מעביר את החבילה ישירות למעבד"],
+    q: "2. מה מבצע כרטיס רשת, NIC, בצד המקבל בשכבה 2 לפי האינפוגרפיקה?",
+    opts: ["בודק MAC ו-FCS, ואם לא תקין זורק לפח Discards Packet", "ממיר את האות החשמלי לגלי רדיו", "משנה את כתובות ה-IP של המקור", "מעביר את החבילה ישירות למעבד"],
     correct: 0,
-    explain: "אם כתובת היעד אינה תואמת או שבדיקת התקינות (FCS) נכשלה, כרטיס הרשת זורק את המעטפה מיד."
+    explain: "אם כתובת היעד אינה תואמת או שבדיקת התקינות FCS נכשלה, כרטיס הרשת זורק את המעטפה מיד."
   },
   {
-    q: "3. מה קורה ל-L2 Frame כשהוא עובר דרך נתב (Router)?",
+    q: "3. מה קורה ל-L2 Frame כשהוא עובר דרך נתב, Router?",
     opts: ["ה-Frame נשאר ללא שינוי לאורך כל הדרך", "הנתב מקלף את ה-L2 Frame הישן ועוטף ב-Frame חדש עם כתובות MAC מעודכנות", "הנתב מוסיף תגית VLAN 802.1Q", "הנתב מוחק את כתובת ה-IP"],
     correct: 1,
     explain: "ראוטר בשכבה 3 מקלף את מעטפת L2 בכניסה, ויוצר מעטפת L2 חדשה ביציאה לרשת הבאה."
   },
   {
     q: "4. מהי המטרה המרכזית של יצירת VLANs ברשת הארגונית?",
-    opts: ["להגדיל את רוחב הפס של כבלי הנחושת", "לחלק את הרשת לתחומי שידור (Broadcast Domains) קטנים ונפרדים", "להחליף את כתובות ה-IP בכתובות MAC", "לבטל את הצורך במתגים"],
+    opts: ["להגדיל את רוחב הפס של כבלי הנחושת", "לחלק את הרשת לתחומי שידור, Broadcast Domains, קטנים ונפרדים", "להחליף את כתובות ה-IP בכתובות MAC", "לבטל את הצורך במתגים"],
     correct: 1,
     explain: "VLANs מפצלים את המתג לרשתות לוגיות נפרדות ומבודדים שידורי Broadcast לשיפור ביצועים ואבטחה."
   },
@@ -1346,21 +1346,21 @@ const quizData = [
   },
   {
     q: "6. איזו תוספת מוסיף פרוטוקול IEEE 802.1Q למעטפת ה-Ethernet?",
-    opts: ["כתובת IP חדשה", "תגית VLAN ID בגודל 4 בתים (Bytes)", "הצפנת SSL מלאה", "כתובת MAC של הנתב"],
+    opts: ["כתובת IP חדשה", "תגית VLAN ID בגודל 4 בתים, Bytes", "הצפנת SSL מלאה", "כתובת MAC של הנתב"],
     correct: 1,
     explain: "תקן 802.1Q מוסיף תגית של 4 בתים המכילה את מזהה ה-VLAN מעל קו ה-Trunk."
   },
   {
     q: "7. כיצד מתג בונה ולומד את טבלת כתובות ה-MAC שלו?",
-    opts: ["לפי כתובת ה-MAC של היעד (Destination MAC)", "לפי כתובת ה-MAC של המקור (Source MAC) בכל פריים שנכנס לפורט", "על ידי פנייה לשרת ה-DNS", "באמצעות הגדרה ידנית בלבד"],
+    opts: ["לפי כתובת ה-MAC של היעד Destination MAC", "לפי כתובת ה-MAC של המקור Source MAC בכל פריים שנכנס לפורט", "על ידי פנייה לשרת ה-DNS", "באמצעות הגדרה ידנית בלבד"],
     correct: 1,
     explain: "המתג קורא את ה-Source MAC של כל פריים נכנס ורושם אותו בטבלה מול הפורט ממנו התקבל."
   },
   {
     q: "8. מה יקרה אם מחשב ב-VLAN 10 ינסה לשלוח פריים למחשב ב-VLAN 20 המחוברים לאותו מתג L2?",
-    opts: ["המידע יעבור ללא בעיה", "המתג יזהה את ה-VLAN השונה ויפיל (Drop) את החבילה בהעדר נתב", "המתג יעביר את המחשבים אוטומטית לאותו VLAN", "החבילה תהפוך ל-Broadcast"],
+    opts: ["המידע יעבור ללא בעיה", "המתג יזהה את ה-VLAN השונה ויפיל Drop את החבילה בהעדר נתב", "המתג יעביר את המחשבים אוטומטית לאותו VLAN", "החבילה תהפוך ל-Broadcast"],
     correct: 1,
-    explain: "מתג שכבה 2 אינו מבצע ניתוב בין VLANs. ללא נתב (Inter-VLAN Routing) התעבורה תיחסם."
+    explain: "מתג שכבה 2 אינו מבצע ניתוב בין VLANs. ללא נתב, Inter-VLAN Routing, התעבורה תיחסם."
   },
   {
     q: "9. איזו פקודה משמשת להגדרת פורט במתג להתחברות למחשב קצה ב-VLAN 10?",
@@ -1369,8 +1369,8 @@ const quizData = [
     explain: "הפקודה switchport access vlan 10 משייכת פורט מסוג Access לרשת הווירטואלית המבוקשת."
   },
   {
-    q: "10. מהי תפקידה של שכבה 1 (Physical) בצד השולח לפי האינפוגרפיקה?",
-    opts: ["להמיר ביטים (0/1) לאותות פיזיים (מתח חשמלי, פולסים של אור, גלי רדיו)", "לבצע בדיקת FCS", "לבדוק את כתובת ה-MAC היעד", "לפענח את פורט ה-TCP"],
+    q: "10. מהי תפקידה של שכבה 1 Physical בצד השולח לפי האינפוגרפיקה?",
+    opts: ["להמיר ביטים, 0/1, לאותות פיזיים: מתח חשמלי, פולסים של אור, גלי רדיו", "לבצע בדיקת FCS", "לבדוק את כתובת ה-MAC היעד", "לפענח את פורט ה-TCP"],
     correct: 0,
     explain: "שכבה 1 אחראית על ההמרה הפיזית של הביטים לאותות העוברים על גבי תתוך התקשורת."
   }
