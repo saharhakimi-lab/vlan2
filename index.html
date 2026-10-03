@@ -7,34 +7,34 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Heebo:wght@300;400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
 :root{
-  --bg:#FAF7F2;
+  --bg:#fdfbf7; /* צבע שמנת */
   --panel:#FFFFFF;
-  --panel2:#F3EFEA;
-  --panel3:#EBE5DD;
-  --border:#E2D9CE;
+  --panel2:#F8F4EE;
+  --panel3:#EFE8DF;
+  --border:#E8DFD5;
   --border2:#CBD5E1;
-  --text:#292524;
-  --muted:#57534E;
-  --muted2:#78716C;
+  --text:#1E293B;
+  --muted:#475569;
+  --muted2:#64748B;
 
-  --vlan10:#3B82F6; /* SALE - Blue */
-  --vlan20:#F97316; /* MNG - Orange */
-  --vlan30:#EAB308; /* MON - Yellow */
-  --trunk:#F59E0B;  /* TRUNK - Amber */
+  --vlan10:#2563EB; /* SALE - Blue */
+  --vlan20:#EA580C; /* MNG - Orange */
+  --vlan30:#D97706; /* MON - Amber */
+  --trunk:#D97706;  /* TRUNK - Amber */
 
-  --stick:#7C3AED;
+  --stick:#DB2777;  /* Pink accent */
   --ok:#059669;
   --bad:#DC2626;
   --info:#2563EB;
 
-  --radius:14px;
+  --radius:16px;
 }
 
 *{ box-sizing:border-box; }
@@ -43,23 +43,58 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:'Rubik',sans-serif;
+  font-family:'Assistant', 'Heebo', sans-serif;
   line-height:1.6;
   font-size:17px;
   padding-bottom:120px;
 }
 
+/* סגנון מסגור מונחי אנגלית */
+.term-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    direction: ltr !important;
+    unicode-bidi: isolate !important;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    padding: 1px 7px;
+    margin: 0 3px;
+    border-radius: 6px;
+    background-color: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+    color: #0f172a;
+    font-weight: 700;
+    line-height: 1.3;
+    vertical-align: middle;
+}
+.term-badge-pink {
+    background-color: #fce7f3;
+    border-color: #f472b6;
+    color: #9d174d;
+}
+.term-badge-teal {
+    background-color: #ccfbf1;
+    border-color: #2dd4bf;
+    color: #115e59;
+}
+
 .mono{ 
-  font-family:'Fira Code',monospace; 
-  direction: ltr; 
-  display: inline-block;
-  unicode-bidi: embed;
+  font-family:'JetBrains Mono', monospace; 
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #F1F5F9;
-  border: 1px solid #CBD5E1;
-  padding: 1px 6px;
-  border-radius: 4px;
+  border: 1.5px solid #CBD5E1;
+  padding: 1px 7px;
+  margin: 0 3px;
+  border-radius: 6px;
   color: #0F172A;
-  font-size: 0.9em;
+  font-size: 0.85em;
+  font-weight: 700;
+  vertical-align: middle;
 }
 
 .wrap{
@@ -85,23 +120,25 @@ header.hero{
 .hero-text{ flex:1; }
 
 .eyebrow{
-  display:inline-block;
-  font-family:'Fira Code',monospace;
+  display:inline-flex;
+  font-family:'JetBrains Mono',monospace;
   font-size:14px;
-  letter-spacing:1px;
+  letter-spacing:0.5px;
   color:var(--stick);
-  background:rgba(124,58,237,0.1);
-  border:1px solid rgba(124,58,237,0.3);
+  background:rgba(219,39,119,0.1);
+  border:1px solid rgba(219,39,119,0.3);
   padding:5px 14px;
   border-radius:20px;
   margin-bottom:10px;
-  direction: ltr;
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  font-weight:700;
 }
 
 h1.title{
   font-size:32px;
   margin-bottom:8px;
-  color:#1C1917;
+  color:#0F172A;
   font-weight:800;
 }
 
@@ -118,8 +155,8 @@ h1.title{
   height:110px;
   border-radius:50%;
   object-fit:cover;
-  border:none;
-  box-shadow:none;
+  border:3px solid #DB2777;
+  box-shadow:0 10px 25px rgba(219,39,119,0.3);
   animation:crazySpin 12s linear infinite;
 }
 
@@ -140,7 +177,7 @@ h1.title{
 
 .tab-btn{
   padding:14px 20px;
-  font-weight:600;
+  font-weight:700;
   font-size:16px;
   border:none;
   background:transparent;
@@ -156,15 +193,16 @@ h1.title{
 
 .tab-btn:hover{
   color:var(--stick);
-  background:rgba(124,58,237,0.05);
-  border-radius:8px 8px 0 0;
+  background:rgba(219,39,119,0.05);
+  border-radius:12px 12px 0 0;
 }
 
 .tab-btn.active{
   color:var(--stick);
   border-bottom-color:var(--stick);
   background:var(--panel);
-  border-radius:8px 8px 0 0;
+  border-radius:12px 12px 0 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
 }
 
 .tab-content{ display:none; padding:24px 0; }
@@ -175,7 +213,7 @@ h1.title{
   border:1px solid var(--border);
   border-radius:var(--radius);
   padding:24px;
-  box-shadow:0 4px 6px -1px rgba(0,0,0,0.02);
+  box-shadow:0 4px 12px -2px rgba(0,0,0,0.04);
   margin-bottom:20px;
 }
 
@@ -192,11 +230,12 @@ h1.title{
 
 /* INTERACTIVE SWITCH BOARD */
 .switch-board{
-  background:#1E293B;
-  border:3px solid #334155;
-  border-radius:12px;
-  padding:16px;
+  background:#0F172A;
+  border:3px solid #1E293B;
+  border-radius:18px;
+  padding:18px;
   color:#FFFFFF;
+  box-shadow: 0 15px 30px -10px rgba(15,23,42,0.3);
 }
 
 .ports-grid{
@@ -208,53 +247,52 @@ h1.title{
 }
 
 .port-box{
-  background:#334155;
-  border:2px solid #475569;
-  border-radius:6px;
+  background:#1E293B;
+  border:2px solid #334155;
+  border-radius:8px;
   padding:8px 2px;
   text-align:center;
-  font-family:'Fira Code',monospace;
+  font-family:'JetBrains Mono',monospace;
   font-size:12px;
   transition:all 0.3s ease;
   direction: ltr;
 }
 
-.port-box.vlan-10{ background:rgba(59,130,246,0.3); border-color:#3B82F6; color:#93C5FD; }
-.port-box.vlan-20{ background:rgba(249,115,22,0.3); border-color:#F97316; color:#FDBA74; }
-.port-box.vlan-30{ background:rgba(234,179,8,0.3); border-color:#EAB308; color:#FDE047; }
-.port-box.vlan-trunk{ background:rgba(245,158,11,0.3); border-color:#F59E0B; color:#FCD34D; }
-
+.port-box.vlan-10{ background:rgba(37,99,235,0.3); border-color:#3B82F6; color:#93C5FD; }
+.port-box.vlan-20{ background:rgba(234,88,12,0.3); border-color:#F97316; color:#FDBA74; }
+.port-box.vlan-30{ background:rgba(217,119,6,0.3); border-color:#EAB308; color:#FDE047; }
+.port-box.vlan-trunk{ background:rgba(217,119,6,0.35); border-color:#F59E0B; color:#FCD34D; }
 
 /* ===== מחולל פקודות אינטראקטיבי ===== */
 .port-box{ cursor:pointer; position:relative; user-select:none; }
-.port-box:hover{ transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.35); }
+.port-box:hover{ transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.45); }
 .port-box.sel{ outline:3px dashed var(--pv,#A78BFA); outline-offset:2px; transform:translateY(-3px); }
 .port-box.flash{ animation:portFlash .9s ease; }
 @keyframes portFlash{ 0%{ transform:scale(1); } 30%{ transform:scale(1.25); box-shadow:0 0 16px #fff; } 100%{ transform:scale(1); } }
-.vlan-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; direction:rtl; }
-.vlan-chip{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:3px 10px; border-radius:9999px; background:#0F172A; border:1px solid #475569; color:#E2E8F0; }
+.vlan-chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; direction:rtl; }
+.vlan-chip{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; padding:4px 12px; border-radius:9999px; background:#1E293B; border:1px solid #334155; color:#F1F5F9; }
 .vlan-chip i{ width:10px; height:10px; border-radius:50%; display:inline-block; }
-.cfg-preview{ margin-top:12px; padding:10px 14px; border-radius:10px; background:#F5F3FF; border:2px dashed #C4B5FD; color:#4C1D95; font-size:14px; font-weight:600; min-height:44px; }
+.cfg-preview{ margin-top:12px; padding:12px 16px; border-radius:12px; background:#FDF2F8; border:2px dashed #F472B6; color:#831843; font-size:14px; font-weight:700; min-height:48px; }
 .cfg-preview.err{ background:#FEF2F2; border-color:#FCA5A5; color:#991B1B; animation:shake .4s; }
 @keyframes shake{ 20%,60%{ transform:translateX(-5px); } 40%,80%{ transform:translateX(5px); } }
-.cli-line{ padding:1px 6px; border-radius:4px; cursor:pointer; transition:background .15s; }
+.cli-line{ padding:2px 8px; border-radius:6px; cursor:pointer; transition:background .15s; margin-bottom:2px; }
 .cli-line:hover{ background:rgba(56,189,248,.15); }
-.cli-line.active{ background:rgba(167,139,250,.28); }
-.cli-line .pr{ color:#4ADE80; }
-.cli-line .kw{ color:#FBBF24; }
+.cli-line.active{ background:rgba(236,72,153,.28); }
+.cli-line .pr{ color:#4ADE80; font-weight:700; }
+.cli-line .kw{ color:#FBBF24; font-weight:700; }
 .cli-line .cm{ color:#94A3B8; }
-.cli-out{ padding:0 6px; color:#CBD5E1; white-space:pre; }
+.cli-out{ padding:0 8px; color:#CBD5E1; white-space:pre; font-size:0.9em; }
 .cli-cursor{ display:inline-block; width:8px; height:15px; background:#38BDF8; vertical-align:middle; animation:blink 1s steps(2) infinite; }
 @keyframes blink{ 50%{ opacity:0; } }
-.cli-explain{ margin-top:10px; padding:12px 14px; border-radius:10px; background:#EFF6FF; border:2px solid #BFDBFE; color:#1E3A8A; font-size:15px; min-height:48px; }
+.cli-explain{ margin-top:10px; padding:12px 16px; border-radius:12px; background:#EFF6FF; border:2px solid #BFDBFE; color:#1E3A8A; font-size:15px; font-weight:600; min-height:48px; }
 
 .terminal-box{
   background:#0F172A;
-  border:1px solid #334155;
-  border-radius:10px;
+  border:2px solid #1E293B;
+  border-radius:14px;
   padding:18px;
-  font-family:'Fira Code',monospace;
-  font-size:15px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
   color:#38BDF8;
   direction:ltr;
   text-align:left;
@@ -268,10 +306,14 @@ h1.title{
   border-radius:12px;
   border:1px solid var(--border);
   background:#FFFFFF;
+  transition: transform 0.3s ease;
+}
+.infographic-img:hover {
+  transform: scale(1.02);
 }
 
 .diagram-wrap{
-  background:#F5F0E8;
+  background:#F8F4EE;
   border:2px solid var(--border);
   border-radius:var(--radius);
   padding:20px;
@@ -282,29 +324,30 @@ button.btn{
   background:var(--stick);
   color:#FFFFFF;
   border:none;
-  border-radius:8px;
-  padding:12px 20px;
-  font-family:'Rubik', sans-serif;
-  font-weight:600;
+  border-radius:10px;
+  padding:12px 22px;
+  font-family:'Assistant', 'Heebo', sans-serif;
+  font-weight:700;
   font-size:16px;
   cursor:pointer;
-  transition:transform .1s, opacity .15s;
+  transition:all .15s ease;
+  box-shadow:0 4px 12px rgba(219,39,119,0.25);
 }
 
-button.btn:hover{ opacity:0.9; }
+button.btn:hover{ opacity:0.95; transform:translateY(-2px); shadow:0 6px 16px rgba(219,39,119,0.35); }
 button.btn:active{ transform:scale(0.97); }
-button.btn.secondary{ background:var(--panel3); color:var(--text); border:1px solid var(--border2); }
-button.btn.pause-btn{ background:#D97706; }
+button.btn.secondary{ background:var(--panel3); color:var(--text); border:1px solid var(--border2); box-shadow:none; }
+button.btn.pause-btn{ background:#D97706; box-shadow:0 4px 12px rgba(217,119,6,0.25); }
 button.btn.teacher-btn{ 
   background: linear-gradient(135deg, #059669 0%, #047857 100%);
   color: #ffffff;
-  box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
 }
 
 /* SIMULATOR PDU */
 .pdu-envelope{ pointer-events:none; overflow:visible; }
 .pdu-text{
-  font-family:'Fira Code',monospace;
+  font-family:'JetBrains Mono',monospace;
   direction:ltr;
   unicode-bidi:plaintext;
   text-anchor:middle;
@@ -317,20 +360,20 @@ button.btn.teacher-btn{
   writing-mode:horizontal-tb;
 }
 
-#movingPacket .pdu-body{ filter:drop-shadow(0 5px 8px rgba(15,23,42,0.22)); }
+#movingPacket .pdu-body{ filter:drop-shadow(0 5px 12px rgba(15,23,42,0.3)); }
 #movingPacket .pdu-content{ clip-path:url(#pduClip); }
 
 .log-panel{
   background:#FAF7F2;
-  border:1px solid var(--border);
-  border-radius:10px;
+  border:1.5px solid var(--border);
+  border-radius:12px;
   margin-top:16px;
   padding:16px;
-  font-family:'Fira Code',monospace;
-  font-size:15px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
   max-height:220px;
   overflow-y:auto;
-  color:#44403C;
+  color:#334155;
   direction: rtl;
   text-align: right;
 }
@@ -356,14 +399,14 @@ button.btn.teacher-btn{
   background:var(--panel2);
   border:1px solid var(--border);
   border-radius:var(--radius);
-  padding:16px;
+  padding:18px;
 }
 
 .info-thumb-card{
   background:var(--panel);
   border:1px solid var(--border);
-  border-radius:10px;
-  padding:10px;
+  border-radius:12px;
+  padding:12px;
   cursor:pointer;
   transition:all 0.2s ease;
 }
@@ -371,7 +414,7 @@ button.btn.teacher-btn{
 .info-thumb-card:hover{
   border-color:var(--stick);
   transform:translateY(-2px);
-  box-shadow:0 4px 12px rgba(124,58,237,0.15);
+  box-shadow:0 6px 16px rgba(219,39,119,0.15);
 }
 
 .quiz-q{
@@ -384,38 +427,43 @@ button.btn.teacher-btn{
 
 .quiz-opt{
   background:var(--panel2);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:14px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:14px 18px;
   cursor:pointer;
-  margin-top:8px;
+  margin-top:10px;
   font-size:16px;
-  transition:border-color 0.15s;
+  font-weight:600;
+  transition:all 0.2s ease;
 }
 
-.quiz-opt:hover{ border-color:var(--muted); }
-.quiz-opt.correct{ background:rgba(5,150,105,0.15); border-color:var(--ok); color:var(--ok); font-weight:600; }
-.quiz-opt.wrong{ background:rgba(220,38,38,0.15); border-color:var(--bad); color:var(--bad); }
+.quiz-opt:hover{ border-color:var(--stick); background:#FFF5F8; }
+.quiz-opt.correct{ background:rgba(5,150,105,0.12); border-color:var(--ok); color:var(--ok); font-weight:700; }
+.quiz-opt.wrong{ background:rgba(220,38,38,0.12); border-color:var(--bad); color:var(--bad); }
 .quiz-opt.disabled{ pointer-events:none; }
 
 .quiz-explain{
   margin-top:12px;
-  padding:12px 14px;
-  background:var(--panel2);
-  border-radius:8px;
+  padding:12px 16px;
+  background:#F8FAFC;
+  border:1px solid #E2E8F0;
+  border-radius:10px;
   font-size:15px;
+  font-weight:600;
+  color:#334155;
   display:none;
 }
 .quiz-explain.show{ display:block; }
 
 .score-card{
   background:var(--panel);
-  border:2px solid var(--stick);
+  border:2.5px solid var(--stick);
   border-radius:var(--radius);
-  padding:24px;
+  padding:28px;
   text-align:center;
   margin-top:20px;
   display:none;
+  box-shadow:0 10px 25px rgba(219,39,119,0.15);
 }
 
 @keyframes fadeIn{
@@ -424,20 +472,16 @@ button.btn.teacher-btn{
 }
 
 /* ===== DESIGN OVERRIDE ===== */
-/* ===== Sahar MAC Lesson – Design Override =====
-   הדביקו את כל הבלוק הזה בתוך <style> הקיים, בסופו (אחרי כל הכללים הקיימים).
-   אפס שינוי בתוכן / ב-HTML / ב-JS. */
-
 :root{
-  --red-soft:#fecaca;      /* אדום בהיר – טאב פעיל */
-  --red-mid:#fca5a5;
-  --red-ink:#7f1d1d;
-  --ink:#1e1b4b;
+  --red-soft:#fce7f3;      /* רוז/ורוד בהיר – טאב פעיל */
+  --red-mid:#f472b6;
+  --red-ink:#9d174d;
+  --ink:#0f172a;
 }
 
 /* ---------- רקע אורורה חי ---------- */
 body{
-  background:#fdf8f4;
+  background:#fdfbf7;
   position:relative;
 }
 body::before{
@@ -445,10 +489,10 @@ body::before{
   position:fixed; inset:-20%;
   z-index:-1;
   background:
-    radial-gradient(40% 40% at 15% 20%, rgba(252,165,165,.55), transparent 70%),
-    radial-gradient(35% 35% at 85% 15%, rgba(56,189,248,.45), transparent 70%),
-    radial-gradient(45% 45% at 70% 85%, rgba(167,139,250,.40), transparent 70%),
-    radial-gradient(35% 35% at 10% 90%, rgba(253,224,71,.35), transparent 70%);
+    radial-gradient(40% 40% at 15% 20%, rgba(252,231,243,.55), transparent 70%),
+    radial-gradient(35% 35% at 85% 15%, rgba(204,251,241,.45), transparent 70%),
+    radial-gradient(45% 45% at 70% 85%, rgba(216,180,254,.40), transparent 70%),
+    radial-gradient(35% 35% at 10% 90%, rgba(254,243,199,.35), transparent 70%);
   filter:blur(30px);
   animation:aurora 22s ease-in-out infinite alternate;
 }
@@ -458,133 +502,29 @@ body::before{
 }
 
 /* ---------- כותרת עליונה זכוכית ---------- */
-header.sticky{
-  background:rgba(255,255,255,.65)!important;
+header.hero{
+  background:rgba(253,251,247,.75)!important;
   backdrop-filter:blur(18px) saturate(1.6);
-  border-bottom:1px solid rgba(255,255,255,.7)!important;
-  box-shadow:0 10px 40px -12px rgba(127,29,29,.25)!important;
-}
-header h1{
-  background:linear-gradient(90deg,#be123c,#7c3aed,#0284c7);
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-header h1 .eng-tag{ -webkit-text-fill-color:#0369a1; }
-header img.avatar-tilted{
-  box-shadow:0 0 0 4px #fff, 0 0 0 7px var(--red-mid), 0 12px 30px rgba(190,18,60,.35);
+  border-bottom:1px solid rgba(232,223,213,.8)!important;
 }
 
 /* ---------- כרטיסים: זכוכית + זוהר ---------- */
-main .bg-white.rounded-2xl,
-aside .bg-white{
-  background:rgba(255,255,255,.72)!important;
+.card{
+  background:rgba(255,255,255,.82)!important;
   backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.85)!important;
-  border-radius:28px!important;
-  box-shadow:0 20px 50px -20px rgba(76,29,149,.28), inset 0 1px 0 #fff!important;
-  transition:transform .35s, box-shadow .35s;
+  border:1px solid rgba(255,255,255,.9)!important;
+  border-radius:20px!important;
+  box-shadow:0 15px 35px -15px rgba(219,39,119,0.12), inset 0 1px 0 #fff!important;
 }
-section .bg-white.rounded-2xl:hover{
-  transform:translateY(-3px);
-  box-shadow:0 30px 60px -20px rgba(190,18,60,.3), inset 0 1px 0 #fff!important;
-}
-
-/* ---------- כותרות ---------- */
-section h2{
-  background:linear-gradient(90deg,#1e1b4b,#be123c);
-  -webkit-background-clip:text; background-clip:text;
-  -webkit-text-fill-color:transparent;
-  letter-spacing:-.01em;
-}
-section h2 .eng-tag{ -webkit-text-fill-color:#0f172a; }
-
-/* ---------- טאבים ---------- */
-.tab-btn{
-  background:rgba(255,255,255,.7)!important;
-  border:1px solid rgba(252,165,165,.45)!important;
-  border-radius:18px!important;
-  color:#334155!important;
-  transition:transform .25s, box-shadow .25s, background .25s!important;
-}
-.tab-btn:hover{
-  transform:translateX(-5px);
-  background:rgba(254,226,226,.8)!important;
-  box-shadow:0 8px 20px -8px rgba(239,68,68,.35);
-}
-
-/* *** הטאב הפעיל – אדום בהיר *** */
-.tab-btn.active-tab,
-.tab-btn.active-tab:hover{
-  background:linear-gradient(135deg,#fecaca 0%,#fca5a5 100%)!important;
-  color:var(--red-ink)!important;
-  border:1px solid #f87171!important;
-  font-weight:800!important;
-  transform:translateX(-8px);
-  box-shadow:0 12px 28px -8px rgba(248,113,113,.65), 0 0 0 4px rgba(254,202,202,.5)!important;
-}
-.tab-btn.active-tab .eng-tag{
-  background:rgba(255,255,255,.8)!important;
-  border-color:rgba(248,113,113,.6)!important;
-  color:var(--red-ink)!important;
-}
-
-/* ---------- תגיות אנגלית ---------- */
-.eng-tag{
-  background:linear-gradient(180deg,#fff,#f1f5f9)!important;
-  border:1px solid rgba(100,116,139,.35)!important;
-  border-radius:9px!important;
-}
-.dark-box .eng-tag{
-  background:rgba(255,255,255,.16)!important;
-  border-color:rgba(255,255,255,.4)!important;
-}
-
-/* ---------- כפתורים ---------- */
-main button.bg-sky-600, main button.bg-sky-500{
-  background:linear-gradient(135deg,#0ea5e9,#6366f1)!important;
-  border-radius:16px!important;
-  box-shadow:0 12px 26px -10px rgba(79,70,229,.7)!important;
-  transition:transform .2s, filter .2s;
-}
-main button.bg-sky-600:hover{ transform:translateY(-2px) scale(1.01); filter:brightness(1.08); }
-
-/* ---------- תשובות בחירה / מבדק ---------- */
-label.cursor-pointer{ border-radius:14px!important; transition:all .2s; }
-label.cursor-pointer:hover{
-  background:#fff1f2!important;
-  border-color:var(--red-mid)!important;
-  transform:translateX(-4px);
-}
-input[type=radio]{ accent-color:#ef4444; }
-
-/* ---------- סימולטור ---------- */
-#sim-stage{
-  background:
-    radial-gradient(circle at 50% 50%, rgba(254,202,202,.5), transparent 60%),
-    linear-gradient(135deg,#f5f3ff,#ecfeff)!important;
-  border-radius:24px!important;
-}
-#node-SW{ box-shadow:0 0 0 8px rgba(251,191,36,.2), 0 0 40px rgba(251,191,36,.55)!important; }
-#animated-packet{ box-shadow:0 0 30px rgba(56,189,248,.7)!important; }
-
-/* ---------- חלון CMD ---------- */
-.cmd-window{
-  border-radius:16px!important;
-  border:1px solid #334155!important;
-  box-shadow:0 25px 50px -15px rgba(0,0,0,.5)!important;
-}
-
-/* ---------- בוט עזר ---------- */
-#bot-fab{ box-shadow:0 0 0 6px rgba(254,202,202,.6), 0 18px 40px rgba(190,18,60,.4)!important; }
-#bot-panel > div{ border-radius:24px!important; border-color:var(--red-mid)!important; }
 
 /* ---------- סרגל גלילה ---------- */
-::-webkit-scrollbar-thumb{ background:linear-gradient(#fca5a5,#a78bfa)!important; }
-::-webkit-scrollbar-track{ background:#fff1f2!important; }
+::-webkit-scrollbar{ width:6px; }
+::-webkit-scrollbar-thumb{ background:linear-gradient(#f472b6,#db2777)!important; border-radius:3px; }
+::-webkit-scrollbar-track{ background:#f1f5f9!important; }
 
 /* ---------- כניסה חלקה בהחלפת טאב ---------- */
-.tab-content.active{ animation:rise .5s cubic-bezier(.2,.8,.2,1); }
-@keyframes rise{ from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none} }
+.tab-content.active{ animation:rise .4s cubic-bezier(.2,.8,.2,1); }
+@keyframes rise{ from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:none} }
 
 </style>
 </head>
@@ -597,13 +537,13 @@ input[type=radio]{ accent-color:#ef4444; }
   <header class="hero">
     <div class="hero-flex">
       <div class="hero-text">
-        <div class="eyebrow">Cisco Catalyst 2960 · Layer 2 Switching · 802.1Q</div>
+        <div class="eyebrow" dir="ltr"><span class="term-badge">Cisco Catalyst 2960</span> · <span class="term-badge">Layer 2 Switching</span> · <span class="term-badge">802.1Q</span></div>
         <h1 class="title">מעבדת הסוויטש והוילאנים של סהר ותלמידי תקשוב</h1>
-        <p class="text-stone-600 text-base">חוקרים, מבינים ומגדירים מתגי רשת בצורה אינטראקטיבית.</p>
+        <p class="text-slate-600 text-base font-medium">חוקרים, מבינים ומגדירים מתגי רשת בצורה אינטראקטיבית.</p>
       </div>
 
       <div class="avatar-wild-wrapper">
-        <img src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w500" alt="אוואטר" class="avatar-wild">
+        <img src="https://lh3.googleusercontent.com/d/1t9QaPCKLvtAhWncetA83ALY8EIvpnFte" alt="אוואטר סהר" class="avatar-wild">
       </div>
     </div>
   </header>
@@ -620,7 +560,7 @@ input[type=radio]{ accent-color:#ef4444; }
       <i data-lucide="activity" class="w-5 h-5"></i> 3. סימולטור תעבורה
     </button>
     <button class="tab-btn" onclick="switchTab('tab4', event)">
-      <i data-lucide="terminal" class="w-5 h-5"></i> 4. מעבדת CLI
+      <i data-lucide="terminal" class="w-5 h-5"></i> 4. מעבדת <span class="term-badge-pink">CLI</span>
     </button>
     <button class="tab-btn" onclick="switchTab('tab5', event)">
       <i data-lucide="check-circle" class="w-5 h-5"></i> 5. מבדק מסכם
@@ -630,11 +570,11 @@ input[type=radio]{ accent-color:#ef4444; }
   <!-- TAB 1: INTERACTIVE SWITCH CONFIGURATOR -->
   <div id="tab1" class="tab-content active">
     <div class="card">
-      <h2 class="text-xl font-bold text-stone-800 mb-2 flex items-center gap-2">
-        <i data-lucide="cpu" class="text-purple-600 w-6 h-6"></i> מהו מתג <span class="mono">Switch</span> וכיצד מגדירים <span class="mono">VLANs</span> בפורטים?
+      <h2 class="text-xl font-bold text-slate-900 mb-2 flex items-center gap-2">
+        <i data-lucide="cpu" class="text-pink-600 w-6 h-6"></i> מהו מתג <span class="term-badge">Switch</span> וכיצד מגדירים <span class="term-badge-pink">VLANs</span> בפורטים?
       </h2>
-      <p class="text-stone-600 text-base mb-4 leading-relaxed">
-        <b>מתג <span class="mono">Switch</span></b> מחבר מכשירים ברשת המקומית <span class="mono">LAN</span> בשכבה 2 <span class="mono">Layer 2</span>. כדי להבטיח אבטחה וחלוקה לתחומי שידור <span class="mono">Broadcast Domains</span>, אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות <span class="mono">VLANs</span>. תרגל למטה הגדרת פורטים למתג <span class="mono">Cisco Catalyst 2960</span>!
+      <p class="text-slate-700 text-base mb-4 leading-relaxed font-medium">
+        <b>מתג <span class="term-badge">Switch</span></b> מחבר מכשירים ברשת המקומית <span class="term-badge">LAN</span> בשכבה 2 <span class="term-badge">Layer 2</span>. כדי להבטיח אבטחה וחלוקה לתחומי שידור <span class="term-badge">Broadcast Domains</span>, אנו משייכים את הפורטים הפיזיים שלו לרשתות וירטואליות <span class="term-badge-pink">VLANs</span>. תרגל למטה הגדרת פורטים למתג <span class="term-badge">Cisco Catalyst 2960</span>!
       </p>
 
       <!-- PHYSICAL SWITCH DISPLAY -->
@@ -647,12 +587,12 @@ input[type=radio]{ accent-color:#ef4444; }
           <span class="text-sm text-slate-400 font-mono" dir="ltr">24x FastEthernet + 2x Gigabit Trunk</span>
         </div>
 
-        <div class="bg-white rounded border border-slate-700 p-2 mb-4">
-          <img src="https://drive.google.com/thumbnail?id=1iap5LZJDOCWeqFs7v6eqY6l8vQUWWzxu&sz=w1000" alt="Cisco Catalyst 2960" class="w-full h-auto object-cover rounded">
+        <div class="bg-white rounded-lg border border-slate-700 p-2 mb-4 shadow-sm">
+          <img src="https://lh3.googleusercontent.com/d/1iap5LZJDOCWeqFs7v6eqY6l8vQUWWzxu" alt="Cisco Catalyst 2960" class="w-full h-auto object-cover rounded">
         </div>
 
         <!-- PORTS LAYOUT INTERACTIVE -->
-        <div class="text-sm text-slate-300 font-bold mb-1">מפת שיוך הפורטים במתג <span class="mono">Ports 1-24</span>, אי-זוגי למעלה, זוגי למטה:</div>
+        <div class="text-sm text-slate-300 font-bold mb-1">מפת שיוך הפורטים במתג <span class="term-badge-teal">Ports 1-24</span>, אי-זוגי למעלה, זוגי למטה:</div>
         <div class="ports-grid" id="portsGrid">
           <!-- Generated via JS -->
         </div>
@@ -661,13 +601,13 @@ input[type=radio]{ accent-color:#ef4444; }
       </div>
 
       <!-- CONFIGURATION CONTROLS -->
-      <div class="bg-stone-50 border border-stone-200 p-5 rounded-xl mb-6">
-        <h3 class="font-bold text-stone-800 text-base mb-3">🛠️ מחולל פקודות קונפיגורציה <span class="mono">VLAN Assignment</span>:</h3>
+      <div class="bg-amber-50/60 border border-amber-200 p-5 rounded-xl mb-6 shadow-xs">
+        <h3 class="font-bold text-slate-900 text-base mb-3">🛠️ מחולל פקודות קונפיגורציה <span class="term-badge">VLAN Assignment</span>:</h3>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4 text-base">
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">בחר <span class="mono">VLAN</span>, מחלקה:</label>
-            <select id="selVlan" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr">
+            <label class="block text-xs font-bold text-slate-700 mb-1">בחר <span class="term-badge-pink">VLAN</span>, מחלקה:</label>
+            <select id="selVlan" class="w-full bg-white border border-amber-300 rounded-lg p-2.5 font-mono text-base font-bold text-slate-800" dir="ltr">
               <option value="10">VLAN 10 - SALE מכירות</option>
               <option value="20">VLAN 20 - MNG ניהול</option>
               <option value="30">VLAN 30 - MON ניטור</option>
@@ -675,18 +615,18 @@ input[type=radio]{ accent-color:#ef4444; }
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">מפורט <span class="mono">From Port</span>:</label>
-            <select id="selStartPort" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr"></select>
+            <label class="block text-xs font-bold text-slate-700 mb-1">מפורט <span class="term-badge">From Port</span>:</label>
+            <select id="selStartPort" class="w-full bg-white border border-amber-300 rounded-lg p-2.5 font-mono text-base font-bold text-slate-800" dir="ltr"></select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">עד פורט <span class="mono">To Port</span>:</label>
-            <select id="selEndPort" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr"></select>
+            <label class="block text-xs font-bold text-slate-700 mb-1">עד פורט <span class="term-badge">To Port</span>:</label>
+            <select id="selEndPort" class="w-full bg-white border border-amber-300 rounded-lg p-2.5 font-mono text-base font-bold text-slate-800" dir="ltr"></select>
           </div>
 
           <div>
-            <label class="block text-xs font-bold text-stone-600 mb-1">מצב פורט <span class="mono">Port Mode</span>:</label>
-            <select id="selPortMode" class="w-full bg-white border border-stone-300 rounded-lg p-2.5 font-mono text-base" dir="ltr">
+            <label class="block text-xs font-bold text-slate-700 mb-1">מצב פורט <span class="term-badge">Port Mode</span>:</label>
+            <select id="selPortMode" class="w-full bg-white border border-amber-300 rounded-lg p-2.5 font-mono text-base font-bold text-slate-800" dir="ltr">
               <option value="access">Access מכשיר קצה</option>
               <option value="trunk">Trunk חיבור בין מתגים</option>
             </select>
@@ -696,19 +636,19 @@ input[type=radio]{ accent-color:#ef4444; }
         <div id="cfgPreview" class="cfg-preview mb-4"></div>
 
         <button class="btn w-full" onclick="generateConfig()">
-          ⚡ החל הגדרה וייצר פקודות <span class="mono">CLI</span> מתאימות
+          ⚡ החל הגדרה וייצר פקודות <span class="term-badge-pink">CLI</span> מתאימות
         </button>
       </div>
 
       <!-- TERMINAL DISPLAY -->
       <div>
         <div class="flex justify-between items-center mb-1">
-          <span class="text-sm font-bold text-stone-700">💻 פקודות ה-<span class="mono">Cisco IOS</span> שנוצרו בזמן אמת:</span>
-          <span class="text-xs text-purple-600 font-mono" dir="ltr">Syntax: Cisco CLI</span>
+          <span class="text-sm font-bold text-slate-800">💻 פקודות ה-<span class="term-badge">Cisco IOS</span> שנוצרו בזמן אמת:</span>
+          <span class="text-xs text-pink-600 font-mono font-bold" dir="ltr">Syntax: Cisco CLI</span>
         </div>
         <div class="terminal-box" id="cliTerminal" dir="ltr"></div>
         <div class="flex flex-wrap justify-between items-center gap-2 mt-2">
-          <span class="text-xs text-stone-500">💡 לחץ על שורת פקודה כדי לקבל הסבר על מה היא עושה</span>
+          <span class="text-xs text-slate-500 font-medium">💡 לחץ על שורת פקודה כדי לקבל הסבר על מה היא עושה</span>
           <button class="btn secondary" style="padding:6px 14px;font-size:13px;" onclick="copyCli()" id="copyCliBtn">📋 העתק פקודות</button>
         </div>
         <div class="cli-explain" id="cliExplain">הסבר על הפקודה יופיע כאן 👆</div>
@@ -719,36 +659,36 @@ input[type=radio]{ accent-color:#ef4444; }
   <!-- TAB 2: INFOGRAPHICS ANALYSIS -->
   <div id="tab2" class="tab-content">
     <div class="card mb-6">
-      <h2 class="text-2xl font-bold text-stone-800 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף <span class="mono">OSI Encapsulation</span></h2>
+      <h2 class="text-2xl font-bold text-slate-900 mb-3">אינפוגרפיקה 1: תהליך הכימוס והחילוף <span class="term-badge">OSI Encapsulation</span></h2>
       <div class="grid2 items-start">
-        <img src="https://drive.google.com/thumbnail?id=1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3&sz=w1000" alt="אינפוגרפיקה 1" class="infographic-img cursor-pointer" onclick="openImageModal(this.src)">
-        <div class="space-y-3 text-base text-stone-700">
-          <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>💻 מחשב שולח <span class="mono">OS</span>:</b> מבצע <span class="mono">Encapsulation</span>, מוסיף <span class="mono">IP Packet Header</span> בשכבה 3 <span class="mono">Network Layer</span>.
+        <img src="https://lh3.googleusercontent.com/d/1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3" alt="אינפוגרפיקה 1" class="infographic-img cursor-pointer" onclick="openImageModal(this.src)">
+        <div class="space-y-3 text-base text-slate-700">
+          <div class="bg-amber-50/60 p-4 rounded-xl border border-amber-200">
+            <b>💻 מחשב שולח <span class="term-badge">OS</span>:</b> מבצע <span class="term-badge">Encapsulation</span>, מוסיף <span class="term-badge">IP Packet Header</span> בשכבה 3 <span class="term-badge">Network Layer</span>.
           </div>
-          <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>🎴 כרטיס רשת <span class="mono">NIC</span>:</b> עוטף ב-<span class="mono">L2 Frame</span> בשכבת <span class="mono">Data Link</span> עם כתובות <span class="mono">MAC</span> מקור ויעד.
+          <div class="bg-amber-50/60 p-4 rounded-xl border border-amber-200">
+            <b>🎴 כרטיס רשת <span class="term-badge">NIC</span>:</b> עוטף ב-<span class="term-badge">L2 Frame</span> בשכבת <span class="term-badge">Data Link</span> עם כתובות <span class="term-badge">MAC</span> מקור ויעד.
           </div>
-          <div class="bg-blue-50 p-4 rounded-lg border">
-            <b>🔀 סוויטש <span class="mono">Switch - L2</span>:</b> מעביר לפי כתובות <span class="mono">MAC</span> בלבד, אינו משנה את המעטפת!
+          <div class="bg-blue-50/60 p-4 rounded-xl border border-blue-200">
+            <b>🔀 סוויטש <span class="term-badge">Switch - L2</span>:</b> מעביר לפי כתובות <span class="term-badge">MAC</span> בלבד, אינו משנה את המעטפת!
           </div>
-          <div class="bg-amber-50 p-4 rounded-lg border">
-            <b>🌐 ראוטר <span class="mono">Router - L3</span>:</b> מקלף את ה-<span class="mono">L2 Frame</span> הישן בכניסה, ויוצר <span class="mono">L2 Frame</span> חדש ביציאה!
+          <div class="bg-pink-50/60 p-4 rounded-xl border border-pink-200">
+            <b>🌐 ראוטר <span class="term-badge">Router - L3</span>:</b> מקלף את ה-<span class="term-badge">L2 Frame</span> הישן בכניסה, ויוצר <span class="term-badge">L2 Frame</span> חדש ביציאה!
           </div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <h2 class="text-2xl font-bold text-stone-800 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת <span class="mono">NIC</span> בשכבות 1 ו-2</h2>
+      <h2 class="text-2xl font-bold text-slate-900 mb-3">אינפוגרפיקה 2: תפקיד כרטיס הרשת <span class="term-badge">NIC</span> בשכבות 1 ו-2</h2>
       <div class="grid2 items-start">
-        <img src="https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w1000" alt="אינפוגרפיקה 2" class="infographic-img cursor-pointer" onclick="openImageModal(this.src)">
-        <div class="space-y-3 text-base text-stone-700">
-          <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>📤 צד שולח:</b> בשכבה 2 <span class="mono">L2</span> מוסיף <span class="mono">FCS</span> לבדיקת תקינות, ובשכבה 1 <span class="mono">L1</span> ממיר לאותות פיזיים כגון נחושת, אור או אלחוט.
+        <img src="https://lh3.googleusercontent.com/d/17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP" alt="אינפוגרפיקה 2" class="infographic-img cursor-pointer" onclick="openImageModal(this.src)">
+        <div class="space-y-3 text-base text-slate-700">
+          <div class="bg-amber-50/60 p-4 rounded-xl border border-amber-200">
+            <b>📤 צד שולח:</b> בשכבה 2 <span class="term-badge">L2</span> מוסיף <span class="term-badge">FCS</span> לבדיקת תקינות, ובשכבה 1 <span class="term-badge">L1</span> ממיר לאותות פיזיים כגון נחושת, אור או אלחוט.
           </div>
-          <div class="bg-stone-50 p-4 rounded-lg border">
-            <b>📥 צד מקבל:</b> בודק תאימות <span class="mono">MAC</span> ובדיקת תקינות <span class="mono">FCS</span>. אם ה-<span class="mono">Frame</span> פגום, הוא נפלט מיד לזבל <span class="mono">Discard</span>!
+          <div class="bg-amber-50/60 p-4 rounded-xl border border-amber-200">
+            <b>📥 צד מקבל:</b> בודק תאימות <span class="term-badge">MAC</span> ובדיקת תקינות <span class="term-badge">FCS</span>. אם ה-<span class="term-badge">Frame</span> פגום, הוא נפלט מיד לזבל <span class="term-badge">Discard</span>!
           </div>
         </div>
       </div>
@@ -758,9 +698,9 @@ input[type=radio]{ accent-color:#ef4444; }
   <!-- TAB 3: FULL SIMULATOR -->
   <div id="tab3" class="tab-content">
     <div class="card">
-      <h2 class="text-2xl font-bold text-stone-800 mb-1">סימולטור <span class="mono">VLANs</span>, תיוג <span class="mono">802.1Q</span> ומעקב חבילות <span class="mono">PDU</span></h2>
-      <p class="text-stone-600 text-base mb-4">
-        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת <span class="mono">PDU</span> ובתיוג ה-<span class="mono">VLAN</span> על גבי קו ה-<span class="mono">Trunk</span>!
+      <h2 class="text-2xl font-bold text-slate-900 mb-1">סימולטור <span class="term-badge-pink">VLANs</span>, תיוג <span class="term-badge">802.1Q</span> ומעקב חבילות <span class="term-badge">PDU</span></h2>
+      <p class="text-slate-700 text-base mb-4 font-medium">
+        בחר תרחיש תקשורת כדי לצפות בתנועת החבילה, בשינויי המעטפת <span class="term-badge">PDU</span> ובתיוג ה-<span class="term-badge-pink">VLAN</span> על גבי קו ה-<span class="term-badge-pink">Trunk</span>!
       </p>
 
       <div class="diagram-wrap">
@@ -772,72 +712,72 @@ input[type=radio]{ accent-color:#ef4444; }
           </defs>
 
           <!-- Connection Lines -->
-          <line x1="180" y1="120" x2="350" y2="260" stroke="#3B82F6" stroke-width="3" />
-          <line x1="180" y1="400" x2="350" y2="260" stroke="#F97316" stroke-width="3" />
+          <line x1="180" y1="120" x2="350" y2="260" stroke="#2563EB" stroke-width="3" />
+          <line x1="180" y1="400" x2="350" y2="260" stroke="#EA580C" stroke-width="3" />
 
-          <line x1="350" y1="260" x2="750" y2="260" stroke="#2563EB" stroke-width="6" stroke-dasharray="8 4"/>
-          <text x="550" y="245" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="13" font-weight="700">Trunk Link 802.1Q Tagged</text>
+          <line x1="350" y1="260" x2="750" y2="260" stroke="#DB2777" stroke-width="6" stroke-dasharray="8 4"/>
+          <text x="550" y="245" text-anchor="middle" fill="#DB2777" font-family="JetBrains Mono" font-size="13" font-weight="700">Trunk Link 802.1Q Tagged</text>
 
-          <line x1="750" y1="260" x2="920" y2="120" stroke="#3B82F6" stroke-width="3" />
-          <line x1="750" y1="260" x2="920" y2="400" stroke="#EAB308" stroke-width="3" />
+          <line x1="750" y1="260" x2="920" y2="120" stroke="#2563EB" stroke-width="3" />
+          <line x1="750" y1="260" x2="920" y2="400" stroke="#D97706" stroke-width="3" />
 
           <!-- SWITCH 1 -->
           <g transform="translate(300, 220)">
-            <rect width="100" height="80" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
-            <text x="50" y="30" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_1</text>
-            <text x="50" y="50" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">MAC Table</text>
-            <text x="50" y="68" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="9">Fa0/2 Trunk</text>
+            <rect width="100" height="80" rx="8" fill="#FFFFFF" stroke="#DB2777" stroke-width="3"/>
+            <text x="50" y="30" text-anchor="middle" fill="#0F172A" font-family="Assistant" font-size="14" font-weight="800">Switch_1</text>
+            <text x="50" y="50" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono" font-size="10">MAC Table</text>
+            <text x="50" y="68" text-anchor="middle" fill="#DB2777" font-family="JetBrains Mono" font-size="9" font-weight="700">Fa0/2 Trunk</text>
           </g>
 
           <!-- SWITCH 2 -->
           <g transform="translate(700, 220)">
-            <rect width="100" height="80" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="3"/>
-            <text x="50" y="30" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="14" font-weight="700">Switch_2</text>
-            <text x="50" y="50" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">MAC Table</text>
-            <text x="50" y="68" text-anchor="middle" fill="#2563EB" font-family="Fira Code" font-size="9">Fa0/2 Trunk</text>
+            <rect width="100" height="80" rx="8" fill="#FFFFFF" stroke="#DB2777" stroke-width="3"/>
+            <text x="50" y="30" text-anchor="middle" fill="#0F172A" font-family="Assistant" font-size="14" font-weight="800">Switch_2</text>
+            <text x="50" y="50" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono" font-size="10">MAC Table</text>
+            <text x="50" y="68" text-anchor="middle" fill="#DB2777" font-family="JetBrains Mono" font-size="9" font-weight="700">Fa0/2 Trunk</text>
           </g>
 
           <!-- PC A (VLAN 10) -->
           <g transform="translate(80, 70)">
-            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_A Sales</text>
-            <text x="100" y="45" text-anchor="middle" fill="#3B82F6" font-family="Fira Code" font-size="11" font-weight="700">VLAN 10</text>
-            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.10.11</text>
-            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: AA:AA:AA:11</text>
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5"/>
+            <text x="100" y="25" text-anchor="middle" fill="#0F172A" font-family="Assistant" font-size="13" font-weight="800">PC_A Sales</text>
+            <text x="100" y="45" text-anchor="middle" fill="#2563EB" font-family="JetBrains Mono" font-size="11" font-weight="700">VLAN 10</text>
+            <text x="100" y="63" text-anchor="middle" fill="#475569" font-family="JetBrains Mono" font-size="10">IP: 10.0.10.11</text>
+            <text x="100" y="78" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono" font-size="9">MAC: AA:AA:AA:11</text>
           </g>
 
           <!-- PC B (VLAN 20) -->
           <g transform="translate(80, 355)">
-            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#F97316" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_B HR</text>
-            <text x="100" y="45" text-anchor="middle" fill="#F97316" font-family="Fira Code" font-size="11" font-weight="700">VLAN 20</text>
-            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.20.22</text>
-            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: BB:BB:BB:22</text>
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#EA580C" stroke-width="2.5"/>
+            <text x="100" y="25" text-anchor="middle" fill="#0F172A" font-family="Assistant" font-size="13" font-weight="800">PC_B HR</text>
+            <text x="100" y="45" text-anchor="middle" fill="#EA580C" font-family="JetBrains Mono" font-size="11" font-weight="700">VLAN 20</text>
+            <text x="100" y="63" text-anchor="middle" fill="#475569" font-family="JetBrains Mono" font-size="10">IP: 10.0.20.22</text>
+            <text x="100" y="78" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono" font-size="9">MAC: BB:BB:BB:22</text>
           </g>
 
           <!-- PC C (VLAN 10) -->
           <g transform="translate(820, 70)">
-            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_C Sales</text>
-            <text x="100" y="45" text-anchor="middle" fill="#3B82F6" font-family="Fira Code" font-size="11" font-weight="700">VLAN 10</text>
-            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.10.33</text>
-            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: CC:CC:CC:33</text>
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="2.5"/>
+            <text x="100" y="25" text-anchor="middle" fill="#0F172A" font-family="Assistant" font-size="13" font-weight="800">PC_C Sales</text>
+            <text x="100" y="45" text-anchor="middle" fill="#2563EB" font-family="JetBrains Mono" font-size="11" font-weight="700">VLAN 10</text>
+            <text x="100" y="63" text-anchor="middle" fill="#475569" font-family="JetBrains Mono" font-size="10">IP: 10.0.10.33</text>
+            <text x="100" y="78" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono" font-size="9">MAC: CC:CC:CC:33</text>
           </g>
 
           <!-- PC D (VLAN 30) -->
           <g transform="translate(820, 355)">
-            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#EAB308" stroke-width="2"/>
-            <text x="100" y="25" text-anchor="middle" fill="#1C1917" font-family="Rubik" font-size="13" font-weight="700">PC_D IT</text>
-            <text x="100" y="45" text-anchor="middle" fill="#EAB308" font-family="Fira Code" font-size="11" font-weight="700">VLAN 30</text>
-            <text x="100" y="63" text-anchor="middle" fill="#57534E" font-family="Fira Code" font-size="10">IP: 10.0.30.44</text>
-            <text x="100" y="78" text-anchor="middle" fill="#78716C" font-family="Fira Code" font-size="9">MAC: DD:DD:DD:44</text>
+            <rect width="200" height="90" rx="8" fill="#FFFFFF" stroke="#D97706" stroke-width="2.5"/>
+            <text x="100" y="25" text-anchor="middle" fill="#0F172A" font-family="Assistant" font-size="13" font-weight="800">PC_D IT</text>
+            <text x="100" y="45" text-anchor="middle" fill="#D97706" font-family="JetBrains Mono" font-size="11" font-weight="700">VLAN 30</text>
+            <text x="100" y="63" text-anchor="middle" fill="#475569" font-family="JetBrains Mono" font-size="10">IP: 10.0.30.44</text>
+            <text x="100" y="78" text-anchor="middle" fill="#64748B" font-family="JetBrains Mono" font-size="9">MAC: DD:DD:DD:44</text>
           </g>
 
           <!-- MOVING PACKET PDU DETAILED -->
           <g id="movingPacket" class="pdu-envelope" style="display:none;">
-            <rect class="pdu-body" x="-125" y="-48" width="250" height="96" rx="10" fill="#0F172A" stroke="#7C3AED" stroke-width="2.5"/>
-            <rect x="-125" y="-48" width="250" height="24" rx="10" fill="#7C3AED"/>
-            <rect x="-125" y="-36" width="250" height="12" fill="#7C3AED"/>
+            <rect class="pdu-body" x="-125" y="-48" width="250" height="96" rx="10" fill="#0F172A" stroke="#DB2777" stroke-width="2.5"/>
+            <rect x="-125" y="-48" width="250" height="24" rx="10" fill="#DB2777"/>
+            <rect x="-125" y="-36" width="250" height="12" fill="#DB2777"/>
             <text id="pktProto" class="pdu-text" x="0" y="-31" fill="#FFFFFF" font-size="10" font-weight="800">PDU</text>
 
             <g class="pdu-content">
@@ -854,20 +794,20 @@ input[type=radio]{ accent-color:#ef4444; }
         </svg>
 
         <div class="mt-3">
-          <span id="selInfo" style="color:var(--muted); font-size:16px; font-weight:500;">
-            בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית <span class="mono">802.1Q</span>...
+          <span id="selInfo" style="color:var(--muted); font-size:16px; font-weight:600;">
+            בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית <span class="term-badge">802.1Q</span>...
           </span>
         </div>
 
         <div class="mt-4 flex flex-wrap gap-3">
           <button class="btn" onclick="runSimulation('VLAN10_SAME')">
-            תקשורת בתוך אותו <span class="mono">VLAN</span>, מ-<span class="mono">PC_A</span> ל-<span class="mono">PC_C</span> 🚀
+            תקשורת בתוך אותו <span class="term-badge-pink">VLAN</span>, מ-<span class="term-badge">PC_A</span> ל-<span class="term-badge">PC_C</span> 🚀
           </button>
-          <button class="btn" style="background:var(--vlan20);" onclick="runSimulation('CROSS_VLAN_FAIL')">
-            ניסיון גישה בין <span class="mono">VLANs</span> שונים, מ-<span class="mono">PC_A</span> ל-<span class="mono">PC_B</span> 🛑
+          <button class="btn" style="background:#EA580C;" onclick="runSimulation('CROSS_VLAN_FAIL')">
+            ניסיון גישה בין <span class="term-badge-pink">VLANs</span> שונים, מ-<span class="term-badge">PC_A</span> ל-<span class="term-badge">PC_B</span> 🛑
           </button>
           <button class="btn" style="background:#059669;" onclick="runSimulation('BROADCAST_VLAN')">
-            שידור <span class="mono">Broadcast</span> ב-<span class="mono">VLAN 10</span> בלבד 📡
+            שידור <span class="term-badge">Broadcast</span> ב-<span class="term-badge-pink">VLAN 10</span> בלבד 📡
           </button>
           <button class="btn pause-btn" id="pauseBtn" onclick="togglePause()">
             השהה ⏸️
@@ -887,16 +827,16 @@ input[type=radio]{ accent-color:#ef4444; }
   <!-- TAB 4: INTERACTIVE CLI LAB -->
   <div id="tab4" class="tab-content">
     <div class="card">
-      <h2 class="text-2xl font-bold text-stone-800 mb-2">מעבדת <span class="mono">CLI</span> - הגדרת <span class="mono">VLAN</span> ופורט <span class="mono">Trunk</span> במתג</h2>
-      <p class="text-stone-600 text-base mb-4">
-        תרגל הגדרת מתג <span class="mono">Cisco Catalyst</span> דרך שורת הפקודה במדויק כמו ב-<span class="mono">Cisco Packet Tracer</span>. הסימולטור תומך בקיצורי פקודות ובמצבי היררכיה מלאים: <span class="mono">User EXEC</span>, <span class="mono">Privileged EXEC</span>, <span class="mono">Global Config</span>, <span class="mono">VLAN Config</span>, <span class="mono">Interface Config</span>.
+      <h2 class="text-2xl font-bold text-slate-900 mb-2">מעבדת <span class="term-badge-pink">CLI</span> - הגדרת <span class="term-badge-pink">VLAN</span> ופורט <span class="term-badge-pink">Trunk</span> במתג</h2>
+      <p class="text-slate-700 text-base mb-4 font-medium">
+        תרגל הגדרת מתג <span class="term-badge">Cisco Catalyst</span> דרך שורת הפקודה במדויק כמו ב-<span class="term-badge">Cisco Packet Tracer</span>. הסימולטור תומך בקיצורי פקודות ובמצבי היררכיה מלאים: <span class="term-badge">User EXEC</span>, <span class="term-badge">Privileged EXEC</span>, <span class="term-badge">Global Config</span>, <span class="term-badge">VLAN Config</span>, <span class="term-badge">Interface Config</span>.
       </p>
 
-      <div class="bg-amber-50 border border-amber-200 p-5 rounded-xl mb-4 text-base">
-        <div class="font-bold text-amber-900 text-lg mb-1" id="taskTitle">משימה: הגדרת <span class="mono">VLAN 10</span>, מעבר לממשק <span class="mono">FastEthernet 0/2</span> והגדרת <span class="mono">Trunk</span></div>
-        <div class="text-sm text-amber-700 font-mono mb-2" id="taskProgress">שלב 1 מתוך 7</div>
-        <div class="text-stone-700" id="taskInstruction">
-          <b>שלב 1:</b> היכנס למצב מוביליג', <span class="mono">Privileged EXEC Mode</span>, על ידי הפקודה: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">enable</code>, או בקיצור: <code class="bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono" dir="ltr">en</code>.
+      <div class="bg-amber-50/70 border border-amber-200 p-5 rounded-xl mb-4 text-base shadow-xs">
+        <div class="font-bold text-amber-900 text-lg mb-1" id="taskTitle">משימה: הגדרת <span class="term-badge-pink">VLAN 10</span>, מעבר לממשק <span class="term-badge">FastEthernet 0/2</span> והגדרת <span class="term-badge-pink">Trunk</span></div>
+        <div class="text-sm text-amber-800 font-mono font-bold mb-2" id="taskProgress">שלב 1 מתוך 7</div>
+        <div class="text-slate-800 font-medium" id="taskInstruction">
+          <b>שלב 1:</b> היכנס למצב מוביליג', <span class="term-badge">Privileged EXEC Mode</span>, על ידי הפקודה: <code class="bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold" dir="ltr">enable</code>, או בקיצור: <code class="bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold" dir="ltr">en</code>.
         </div>
       </div>
 
@@ -906,7 +846,7 @@ Press RETURN to get started.
 
 Switch></div>
         <div class="flex items-center gap-2 mt-3 border-t border-slate-700 pt-2" dir="ltr">
-          <span class="text-green-400 font-mono" id="termPrompt">Switch></span>
+          <span class="text-green-400 font-mono font-bold" id="termPrompt">Switch></span>
           <input
             type="text"
             id="termInput"
@@ -918,24 +858,24 @@ Switch></div>
       </div>
 
       <!-- ROUTER INSTRUCTION BOX FOR STUDENTS -->
-      <div class="mt-6 bg-slate-900 text-slate-100 border border-slate-700 p-5 rounded-xl">
-        <h3 class="font-bold text-lg text-purple-400 mb-2 flex items-center gap-2">
+      <div class="mt-6 bg-slate-900 text-slate-100 border border-slate-700 p-5 rounded-2xl shadow-md">
+        <h3 class="font-bold text-lg text-pink-400 mb-2 flex items-center gap-2">
           <i data-lucide="router" class="w-5 h-5"></i>
-          💡 רוצה לעבור לראוטר? הדרכה לתלמיד להגדרת <span class="mono">Inter-VLAN Routing</span>, שהוא <span class="mono">Router-on-a-Stick</span>
+          💡 רוצה לעבור לראוטר? הדרכה לתלמיד להגדרת <span class="term-badge-pink">Inter-VLAN Routing</span>, שהוא <span class="term-badge-pink">Router-on-a-Stick</span>
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-3">
-          כאשר רוצים לאפשר תקשורת בין <span class="mono">VLANs</span> שונים, למשל מ-<span class="mono">VLAN 10</span> ל-<span class="mono">VLAN 20</span>, מתג שכבה 2 אינו מספיק ונדרש נתב <span class="mono">Router</span>. ב-<span class="mono">Packet Tracer</span>, כדי לעבור לעבוד על הנתב:
+          כאשר רוצים לאפשר תקשורת בין <span class="term-badge-pink">VLANs</span> שונים, למשל מ-<span class="term-badge-pink">VLAN 10</span> ל-<span class="term-badge-pink">VLAN 20</span>, מתג שכבה 2 אינו מספיק ונדרש נתב <span class="term-badge">Router</span>. ב-<span class="term-badge">Packet Tracer</span>, כדי לעבור לעבוד על הנתב:
         </p>
         <ol class="list-decimal list-inside text-sm text-slate-300 space-y-2 mb-3">
-          <li>לחץ על רכיב ה-<span class="mono">Router</span> בטופולוגיה ובחר בטאב <span class="mono">CLI</span>.</li>
-          <li>עבור למצב הגדרה גלובלי: <code class="text-emerald-400 font-mono" dir="ltr">enable</code> ואז <code class="text-emerald-400 font-mono" dir="ltr">configure terminal</code>, מצב הפרומפט יהפוך ל-<span class="mono">Router(config)#</span>.</li>
-          <li>הפעל את הממשק הפיזי המחובר ל-Trunk של הסוויטש: <code class="text-emerald-400 font-mono" dir="ltr">interface gigabitethernet 0/0/0</code> ואז <code class="text-emerald-400 font-mono" dir="ltr">no shutdown</code>.</li>
-          <li>צור תת-ממשק <span class="mono">Sub-interface</span> עבור <span class="mono">VLAN 10</span>: <code class="text-emerald-400 font-mono" dir="ltr">interface gigabitethernet 0/0/0.10</code>, הפרומפט ישתנה ל-<span class="mono">Router(config-subif)#</span>.</li>
-          <li>שייך את תיוג ה-802.1Q: <code class="text-emerald-400 font-mono" dir="ltr">encapsulation dot1Q 10</code>.</li>
-          <li>הגדר כתובת IP שתשמש כ-Default Gateway: <code class="text-emerald-400 font-mono" dir="ltr">ip address 10.0.10.1 255.255.255.0</code>.</li>
+          <li>לחץ על רכיב ה-<span class="term-badge">Router</span> בטופולוגיה ובחר בטאב <span class="term-badge">CLI</span>.</li>
+          <li>עבור למצב הגדרה גלובלי: <code class="text-emerald-400 font-mono font-bold" dir="ltr">enable</code> ואז <code class="text-emerald-400 font-mono font-bold" dir="ltr">configure terminal</code>, מצב הפרומפט יהפוך ל-<span class="term-badge">Router(config)#</span>.</li>
+          <li>הפעל את הממשק הפיזי המחובר ל-Trunk של הסוויטש: <code class="text-emerald-400 font-mono font-bold" dir="ltr">interface gigabitethernet 0/0/0</code> ואז <code class="text-emerald-400 font-mono font-bold" dir="ltr">no shutdown</code>.</li>
+          <li>צור תת-ממשק <span class="term-badge">Sub-interface</span> עבור <span class="term-badge-pink">VLAN 10</span>: <code class="text-emerald-400 font-mono font-bold" dir="ltr">interface gigabitethernet 0/0/0.10</code>, הפרומפט ישתנה ל-<span class="term-badge">Router(config-subif)#</span>.</li>
+          <li>שייך את תיוג ה-802.1Q: <code class="text-emerald-400 font-mono font-bold" dir="ltr">encapsulation dot1Q 10</code>.</li>
+          <li>הגדר כתובת IP שתשמש כ-Default Gateway: <code class="text-emerald-400 font-mono font-bold" dir="ltr">ip address 10.0.10.1 255.255.255.0</code>.</li>
         </ol>
-        <div class="text-xs text-slate-400 bg-slate-800 p-2.5 rounded border border-slate-700">
-          📌 <b>טיפ קיצור ב-Packet Tracer:</b> ניתן להשתמש בקיצורים כגון <code class="text-amber-300 font-mono" dir="ltr">int g0/0/0.10</code> ו-<code class="text-amber-300 font-mono" dir="ltr">encap dot1Q 10</code> בדיוק כפי שתורגלת במעבדה זו!
+        <div class="text-xs text-slate-300 bg-slate-800/80 p-3 rounded-lg border border-slate-700">
+          📌 <b>טיפ קיצור ב-Packet Tracer:</b> ניתן להשתמש בקיצורים כגון <code class="text-amber-300 font-mono font-bold" dir="ltr">int g0/0/0.10</code> ו-<code class="text-amber-300 font-mono font-bold" dir="ltr">encap dot1Q 10</code> בדיוק כפי שתורגלת במעבדה זו!
         </div>
       </div>
     </div>
@@ -946,8 +886,8 @@ Switch></div>
     <div class="card">
       <div class="flex flex-wrap justify-between items-center mb-4 gap-2">
         <div>
-          <h2 class="text-2xl font-bold text-stone-800 mb-1">מבדק מסכם: מתגים, <span class="mono">VLANs</span> ותהליכי תקשורת</h2>
-          <p class="text-stone-600 text-base">ענה על 10 השאלות הבאות כדי לבחון את שליטתך בחומר הנלמד:</p>
+          <h2 class="text-2xl font-bold text-slate-900 mb-1">מבדק מסכם: מתגים, <span class="term-badge-pink">VLANs</span> ותהליכי תקשורת</h2>
+          <p class="text-slate-700 text-base font-medium">ענה על 10 השאלות הבאות כדי לבחון את שליטתך בחומר הנלמד:</p>
         </div>
         <button class="btn teacher-btn flex items-center gap-2" onclick="revealTeacherAnswers()">
           <i data-lucide="key" class="w-5 h-5"></i>
@@ -962,31 +902,31 @@ Switch></div>
           <div id="quizContainer"></div>
 
           <div id="quizScoreCard" class="score-card">
-            <h3 class="text-2xl font-bold text-stone-900 mb-1">תוצאת המבחן המסכם</h3>
-            <div id="scoreDisplay" class="font-mono text-4xl font-extrabold text-purple-700 my-3" dir="ltr">0 / 100</div>
-            <p id="scoreFeedback" class="text-base font-semibold text-stone-600 mb-0"></p>
+            <h3 class="text-2xl font-bold text-slate-900 mb-1">תוצאת המבחן המסכם</h3>
+            <div id="scoreDisplay" class="font-mono text-4xl font-extrabold text-pink-700 my-3" dir="ltr">0 / 100</div>
+            <p id="scoreFeedback" class="text-base font-semibold text-slate-700 mb-0"></p>
           </div>
         </div>
 
         <!-- SIDE INFOGRAPHICS REFERENCE PANEL -->
         <div class="quiz-side-panel">
-          <h3 class="font-bold text-stone-800 text-base mb-3 flex items-center gap-2">
-            <i data-lucide="help-circle" class="text-purple-600 w-5 h-5"></i>
+          <h3 class="font-bold text-slate-900 text-base mb-3 flex items-center gap-2">
+            <i data-lucide="help-circle" class="text-pink-600 w-5 h-5"></i>
             חומרי עזר למבדק
           </h3>
-          <p class="text-xs text-stone-600 mb-4 leading-relaxed">
+          <p class="text-xs text-slate-600 mb-4 leading-relaxed font-medium">
             לחץ על אחת התמונות להגדלה ולעיון באינפוגרפיקה כדי לסייע בפתרון השאלות:
           </p>
 
           <div class="space-y-4">
-            <div class="info-thumb-card" onclick="openImageModal('https://drive.google.com/thumbnail?id=1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3&sz=w1000')">
-              <div class="text-xs font-bold text-stone-700 mb-1">1. <span class="mono">OSI Encapsulation & L2/L3</span></div>
-              <img src="https://drive.google.com/thumbnail?id=1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3&sz=w600" alt="אינפוגרפיקה 1" class="w-full h-auto rounded border">
+            <div class="info-thumb-card" onclick="openImageModal('https://lh3.googleusercontent.com/d/1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3')">
+              <div class="text-xs font-bold text-slate-800 mb-1">1. <span class="term-badge">OSI Encapsulation & L2/L3</span></div>
+              <img src="https://lh3.googleusercontent.com/d/1j4L2sBSPPXYUaEjMyj6y66wIEoBdESW3" alt="אינפוגרפיקה 1" class="w-full h-auto rounded-lg border border-amber-200">
             </div>
 
-            <div class="info-thumb-card" onclick="openImageModal('https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w1000')">
-              <div class="text-xs font-bold text-stone-700 mb-1">2. תפקיד כרטיס הרשת <span class="mono">NIC</span></div>
-              <img src="https://drive.google.com/thumbnail?id=17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP&sz=w600" alt="אינפוגרפיקה 2" class="w-full h-auto rounded border">
+            <div class="info-thumb-card" onclick="openImageModal('https://lh3.googleusercontent.com/d/17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP')">
+              <div class="text-xs font-bold text-slate-800 mb-1">2. תפקיד כרטיס הרשת <span class="term-badge">NIC</span></div>
+              <img src="https://lh3.googleusercontent.com/d/17iop6FSthN4wSvGWK9X2Vd9ecD9nZ8LP" alt="אינפוגרפיקה 2" class="w-full h-auto rounded-lg border border-amber-200">
             </div>
           </div>
         </div>
@@ -999,10 +939,10 @@ Switch></div>
 <!-- IMAGE LIGHTBOX MODAL -->
 <div id="imgModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-[10001] hidden flex items-center justify-center p-4" onclick="closeImageModal()">
   <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center" onclick="event.stopPropagation()">
-    <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white hover:text-stone-300 font-bold text-lg flex items-center gap-1">
+    <button onclick="closeImageModal()" class="absolute -top-10 right-0 text-white hover:text-slate-300 font-bold text-lg flex items-center gap-1">
       <i data-lucide="x" class="w-6 h-6"></i> סגור
     </button>
-    <img id="modalImgSrc" src="" alt="אינפוגרפיקה מורחבת" class="max-w-full max-h-[85vh] object-contain rounded-lg border-2 border-white/20 shadow-2xl">
+    <img id="modalImgSrc" src="" alt="אינפוגרפיקה מורחבת" class="max-w-full max-h-[85vh] object-contain rounded-xl border-2 border-white/20 shadow-2xl">
   </div>
 </div>
 
@@ -1010,11 +950,11 @@ Switch></div>
 <div style="position:fixed; bottom:24px; left:24px; z-index:9999;">
   <button
     id="openHelpModalBtn"
-    class="flex items-center gap-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3.5 px-6 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white/50"
+    class="flex items-center gap-3 bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3.5 px-6 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-105 border-2 border-white/50"
   >
     <div class="w-10 h-10 rounded-full border border-white/60 overflow-hidden bg-slate-900 flex-shrink-0 shadow-inner">
       <img
-        src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w200"
+        src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb"
         alt="אווטר בוט עזרה"
         class="w-full h-full object-cover"
       >
@@ -1029,34 +969,34 @@ Switch></div>
   class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-[10000] hidden flex items-center justify-center p-4 transition-all duration-300"
 >
   <div
-    class="bg-white border border-stone-200 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl transform scale-95 transition-transform duration-300"
+    class="bg-white border border-pink-200 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl transform scale-95 transition-transform duration-300"
     id="helpModalContent"
   >
     <button
       id="closeHelpModalBtn"
-      class="absolute top-4 right-4 text-stone-400 hover:text-stone-700 transition-colors p-1 rounded-lg hover:bg-stone-100"
+      class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors p-1 rounded-lg hover:bg-amber-50"
     >
       <i data-lucide="x" class="w-5 h-5"></i>
     </button>
 
-    <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-purple-500/50 p-1 bg-stone-100 shadow-lg shadow-purple-500/10 overflow-hidden">
+    <div class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-pink-500/50 p-1 bg-amber-50 shadow-lg shadow-pink-500/10 overflow-hidden">
       <img
-        src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w300"
+        src="https://lh3.googleusercontent.com/d/1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb"
         alt="תמונת בוט עזרה"
         class="w-full h-full object-cover rounded-full"
       >
     </div>
 
-    <h3 class="text-xl font-black text-stone-900 mb-2">צריך עזרה במשימה?</h3>
-    <p class="text-base text-stone-600 mb-6 leading-relaxed">
-      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ב-<span class="mono">VLANs</span> ולכוון אותך לפתרון המלא!
+    <h3 class="text-xl font-black text-slate-900 mb-2">צריך עזרה במשימה?</h3>
+    <p class="text-base text-slate-600 mb-6 leading-relaxed font-medium">
+      בוט העזרה הרשמי של האקדמיה זמין כעת כדי לענות על שאלות, להסביר מושגים ב-<span class="term-badge-pink">VLANs</span> ולכוון אותך לפתרון המלא!
     </p>
 
     <a
       href="https://gemini.google.com/gem/167016ac4a4b?usp=sharing"
       target="_blank"
       rel="noopener noreferrer"
-      class="w-full flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-black py-3.5 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-purple-600/20 text-base"
+      class="w-full flex items-center justify-center gap-2 bg-pink-600 hover:bg-pink-500 text-white font-black py-3.5 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-pink-600/20 text-base"
     >
       <span>הפעל את בוט העזרה</span>
       <i data-lucide="external-link" class="w-5 h-5"></i>
@@ -1093,10 +1033,10 @@ let portsData = [
 ];
 
 const VLAN_META = {
-  10: { name: "SALE", color: "#3B82F6" },
-  20: { name: "MNG",  color: "#F97316" },
-  30: { name: "MON",  color: "#EAB308" },
-  trunk: { name: "TRUNK", color: "#F59E0B" },
+  10: { name: "SALE", color: "#2563EB" },
+  20: { name: "MNG",  color: "#EA580C" },
+  30: { name: "MON",  color: "#D97706" },
+  trunk: { name: "TRUNK", color: "#D97706" },
   0: { name: "FREE", color: "#64748B" }
 };
 let changedPorts = [];
@@ -1201,7 +1141,7 @@ function updatePreview(){
   const count = endP - startP + 1;
   const range = startP === endP ? `Fa0/${startP}` : `Fa0/${startP} - Fa0/${endP}`;
   const what = mode === "trunk" ? `<b>Trunk</b> (עובר בו VLAN ${vlan})` : `<b>Access</b> ב-<b>VLAN ${vlan}</b> (${VLAN_META[vlan].name})`;
-  box.innerHTML = `🔎 תצוגה מקדימה: <span class="mono">${range}</span> · ${count} פורטים ← ${what}. לחץ על "החל הגדרה" כדי לבצע.`;
+  box.innerHTML = `🔎 תצוגה מקדימה: <span class="term-badge">${range}</span> · ${count} פורטים ← ${what}. לחץ על "החל הגדרה" כדי לבצע.`;
 }
 
 const CLI_HELP = [
@@ -1226,7 +1166,7 @@ function explainCli(cmd, lineEl){
   lineEl.classList.add("active");
   const hit = CLI_HELP.find(h => h[0].test(cmd));
   document.getElementById("cliExplain").innerHTML =
-    `<span class="mono">${cmd}</span><br>${hit ? hit[1] : "פקודת Cisco IOS."}`;
+    `<span class="term-badge-pink">${cmd}</span><br>${hit ? hit[1] : "פקודת Cisco IOS."}`;
 }
 
 function portListStr(list){
@@ -1517,7 +1457,7 @@ async function runSimulation(type){
   logPanel.innerHTML = "";
 
   if(type === 'VLAN10_SAME'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-<span class='mono'>PC_A</span> ל-<span class='mono'>PC_C</span> דרך ממשק <span class='mono'>Trunk</span> מתוייג, <span class='mono'>802.1Q</span>";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan10)'>תקשורת VLAN 10:</b> מעבר מ-<span class='term-badge'>PC_A</span> ל-<span class='term-badge'>PC_C</span> דרך ממשק <span class='term-badge-pink'>Trunk</span> מתוייג, <span class='term-badge'>802.1Q</span>";
 
     log("<span class='lbl'>[1. Access Port Input]</span> PC_A שולח פריים ללא תיוג, Untagged, לפורט במתג Switch_1 שמוגדר כ-VLAN 10.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
@@ -1546,7 +1486,7 @@ async function runSimulation(type){
     log("<span class='lbl' style='color:var(--ok)'>[הושלם]</span> התקשורת בתוך VLAN 10 הושלמה בהצלחה!");
   }
   else if(type === 'CROSS_VLAN_FAIL'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan20)'>חסימת Cross-VLAN:</b> <span class='mono'>PC_A</span> ב-<span class='mono'>VLAN 10</span> מנסה לתקשר עם <span class='mono'>PC_B</span> ב-<span class='mono'>VLAN 20</span>";
+    document.getElementById("selInfo").innerHTML = "<b style='color:var(--vlan20)'>חסימת Cross-VLAN:</b> <span class='term-badge'>PC_A</span> ב-<span class='term-badge-pink'>VLAN 10</span> מנסה לתקשר עם <span class='term-badge'>PC_B</span> ב-<span class='term-badge-pink'>VLAN 20</span>";
 
     log("<span class='lbl'>[1. Check VLAN]</span> PC_A, VLAN 10, שולח בקשה אל PC_B, VLAN 20.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
@@ -1559,7 +1499,7 @@ async function runSimulation(type){
     log("<span class='lbl' style='color:var(--bad)'>[2. Dropped by Switch]</span> Switch_1 מזהה ש-PC_B נמצא ב-VLAN 20 ומחליט להפיל, Drop, את החבילה! אין נתב או Inter-VLAN Routing.");
   }
   else if(type === 'BROADCAST_VLAN'){
-    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת <span class='mono'>Broadcast</span> ב-<span class='mono'>VLAN 10</span> בלבד, נעצר בפורטים של <span class='mono'>VLANs</span> אחרים";
+    document.getElementById("selInfo").innerHTML = "<b style='color:#059669'>שידור Broadcast:</b> הפצת <span class='term-badge'>Broadcast</span> ב-<span class='term-badge-pink'>VLAN 10</span> בלבד, נעצר בפורטים של <span class='term-badge-pink'>VLANs</span> אחרים";
 
     log("<span class='lbl'>[1. Broadcast Origin]</span> PC_A שולח פריים Broadcast, FF:FF:FF:FF:FF:FF.");
     await animatePacketPDU(coords.PCA.x, coords.PCA.y, coords.SW1.x, coords.SW1.y, {
@@ -1595,7 +1535,7 @@ async function runSimulation(type){
 function resetSim(){
   isSimulating = false;
   if(isPaused){ togglePause(); }
-  document.getElementById("selInfo").innerHTML = "בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית <span class='mono'>802.1Q</span>...";
+  document.getElementById("selInfo").innerHTML = "בחר תרחיש תקשורת לצפייה בהעברת פרימים ותגית <span class='term-badge'>802.1Q</span>...";
   document.getElementById("simLog").innerHTML = '<div class="log-line">מוכן לפעילות. בחר תרחיש לימודי לצפייה בתנועת החבילות ובשינויי המעטפה.</div>';
   document.getElementById("movingPacket").style.display = "none";
 }
@@ -1614,43 +1554,43 @@ const cliSteps = [
     expect: /^(enable|en)$/i,
     ok: "מעולה! עברת למצב מוביליג', Privileged EXEC Mode.",
     nextPrompt: "Switch#",
-    nextInstruction: "<b>שלב 2:</b> הכנס למצב הקונפיגורציה הגלובלי על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>configure terminal</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>conf t</code>."
+    nextInstruction: "<b>שלב 2:</b> הכנס למצב הקונפיגורציה הגלובלי על ידי הפקודה: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>configure terminal</code>, או בקיצור: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>conf t</code>."
   },
   {
     expect: /^(configure\s+terminal|conf\s+t)$/i,
     ok: "מעולה! נכנסת למצב Global Configuration.",
     nextPrompt: "Switch(config)#",
-    nextInstruction: "<b>שלב 3:</b> צור את VLAN 10 על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>vlan 10</code>."
+    nextInstruction: "<b>שלב 3:</b> צור את VLAN 10 על ידי הפקודה: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>vlan 10</code>."
   },
   {
     expect: /^vlan\s+10$/i,
     ok: "מצוין! יצרת את VLAN 10 ועברת למצב VLAN Configuration.",
     nextPrompt: "Switch(config-vlan)#",
-    nextInstruction: "<b>שלב 4:</b> תן ל-VLAN את השם Sales על ידי הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>name Sales</code>."
+    nextInstruction: "<b>שלב 4:</b> תן ל-VLAN את השם Sales על ידי הקלדת הפקודה: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>name Sales</code>."
   },
   {
     expect: /^(name\s+Sales|na\s+Sales)$/i,
     ok: "אלוף! הגדרת את שם ה-VLAN ל-Sales.",
     nextPrompt: "Switch(config-vlan)#",
-    nextInstruction: "<b>שלב 5:</b> צא ממצב VLAN Configuration בחזרה ל-Global Config על ידי הקלדת: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>exit</code>."
+    nextInstruction: "<b>שלב 5:</b> צא ממצב VLAN Configuration בחזרה ל-Global Config על ידי הקלדת: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>exit</code>."
   },
   {
     expect: /^(exit|ex)$/i,
     ok: "מצוין! יצאת ממצב VLAN Configuration וחזרת למצב Global Configuration.",
     nextPrompt: "Switch(config)#",
-    nextInstruction: "<b>שלב 6:</b> נדרש להגדיר את ממשק הטראנק. הכנס להגדרות הממשק FastEthernet 0/2 על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>interface fastethernet 0/2</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>int fa0/2</code>."
+    nextInstruction: "<b>שלב 6:</b> נדרש להגדיר את ממשק הטראנק. הכנס להגדרות הממשק FastEthernet 0/2 על ידי הפקודה: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>interface fastethernet 0/2</code>, או בקיצור: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>int fa0/2</code>."
   },
   {
     expect: /^(interface\s+(fastethernet0\/2|fa0\/2|f0\/2)|int\s+(fastethernet0\/2|fa0\/2|f0\/2))$/i,
     ok: "נכנסת להגדרות ממשק FastEthernet 0/2, Interface Config Mode.",
     nextPrompt: "Switch(config-if)#",
-    nextInstruction: "<b>שלב 7:</b> הגדר את הפורט כ-Trunk על ידי הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport mode trunk</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>sw mo tr</code>."
+    nextInstruction: "<b>שלב 7:</b> הגדר את הפורט כ-Trunk על ידי הפקודה: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>switchport mode trunk</code>, או בקיצור: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>sw mo tr</code>."
   },
   {
     expect: /^(switchport\s+mode\s+trunk|sw\s+mo\s+tr|sw\s+mode\s+trunk)$/i,
     ok: "מעולה! הפורט הוגדר כ-Trunk מעביר תיוג 802.1Q.",
     nextPrompt: "Switch(config-if)#",
-    nextInstruction: "<b>שלב 8, אחרון:</b> אפשר ל-VLAN 10 לעבור בממשק ה-Trunk על ידי הקלדת הפקודה: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>switchport trunk allowed vlan 10</code>, או בקיצור: <code class='bg-amber-100 px-2 py-0.5 rounded text-purple-800 font-mono' dir='ltr'>sw tr al vlan 10</code>."
+    nextInstruction: "<b>שלב 8, אחרון:</b> אפשר ל-VLAN 10 לעבור בממשק ה-Trunk על ידי הקלדת הפקודה: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>switchport trunk allowed vlan 10</code>, או בקיצור: <code class='bg-amber-100/80 border border-amber-300 px-2 py-0.5 rounded text-pink-900 font-mono font-bold' dir='ltr'>sw tr al vlan 10</code>."
   },
   {
     expect: /^(switchport\s+trunk\s+allowed\s+vlan\s+(10|add\s+10)|sw\s+tr\s+al\s+vlan\s+(10|add\s+10))$/i,
@@ -1777,7 +1717,7 @@ function renderQuiz(){
   quizData.forEach((item, qi) => {
     const qDiv = document.createElement("div");
     qDiv.className = "quiz-q";
-    qDiv.innerHTML = `<div class='text-xs font-mono text-stone-500 mb-1' dir='rtl'>שאלה ${qi+1} מתוך ${quizData.length}</div><div class='font-bold text-stone-900 text-lg mb-2'>${item.q}</div>`;
+    qDiv.innerHTML = `<div class='text-xs font-mono font-bold text-slate-500 mb-1' dir='rtl'>שאלה ${qi+1} מתוך ${quizData.length}</div><div class='font-bold text-slate-900 text-lg mb-2'>${item.q}</div>`;
 
     const optsDiv = document.createElement("div");
     optsDiv.className = "quiz-opts";
